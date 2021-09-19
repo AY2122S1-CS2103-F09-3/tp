@@ -7,8 +7,13 @@ package seedu.address.model.person;
 public class Remark {
     public final String value;
 
+    /**
+     * Constructor for a remark.
+     * Remark has no constraints and does not require input validation
+     *
+     * @param value the String remark
+     */
     public Remark(String value) {
-        // Remark has no constraints and does not require input validation
         this.value = value;
     }
 

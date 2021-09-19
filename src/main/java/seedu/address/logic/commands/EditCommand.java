@@ -187,7 +187,9 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        public Remark getRemark() { return remark; }
+        public Remark getRemark() {
+            return remark;
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
