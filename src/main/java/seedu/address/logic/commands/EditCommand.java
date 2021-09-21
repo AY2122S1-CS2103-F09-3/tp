@@ -225,4 +225,5 @@ public class EditCommand extends Command {
                     && getTags().equals(e.getTags());
         }
     }
+
 }
