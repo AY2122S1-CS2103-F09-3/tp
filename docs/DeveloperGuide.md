@@ -273,16 +273,22 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ---------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
 
-_{More to be added}_
+=======
+| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| `* * *`  | potential user exploring the app           | see the app populated with sample data| easily see how the app will look like when it is in use.        |
+| `* * *`  | user ready to start using the app          | purge all current data         |  get rid of sample/experimental data I used for exploring the app      |
+| `* * *`  | CS2100 TA                                  | be able to create records of individual students: (Name, Student ID, Class ID, Overall Grade)| so that I can identify and track their progress separately|
+| `* * *`  | CS2100 TA                                  | be able to sort the class records| have an organized class record                                       |
+| `* * *`  | CS2100 TA                                  | delete the details of a student| clear the information of students who have dropped out of the class    |
+| `* * *`  | new user                                   | use the in-build help feature  | learn how to use the app quickly                                       |
+| `* * *`  | CS2100 TA                                  | be able to view (read) the records of individual students| know more about the student's current performance and grade |
+| `* * *`  | CS2100 TA                                  | be able to update the details of a student| correct any mistakes that I have made                       |
+| `* * *`  | CS2100 TA                                  | be able to save the data in a CSV file| upload to LumiNUS and share with the CS2100 Instructors          |
+| `* * *`  | proficient programmer / TA                 | navigate ProgrammerError seamlessly with the use of Unix command| efficiently manage my class           |
+*{More to be added}*
+
 
 ### Use cases
 
