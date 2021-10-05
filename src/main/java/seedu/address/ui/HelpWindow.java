@@ -16,7 +16,7 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL = "https://ay2122s1-cs2103-f09-3.github.io/tp/UserGuide.html";
-    public static final String HELP_MESSAGE = "Full user guide: " + USERGUIDE_URL;
+    public static final String HELP_MESSAGE = "To see more: " + USERGUIDE_URL;
     private static final String FEATURE_LIST = "Here is the feature list of ProgrammerError:\n"
             + "1. Purge Sample Data (Delete all)\n"
             + "   -> purge\n"
