@@ -88,11 +88,11 @@ public class ParserUtil {
      */
     public static Email parseEmail(String email) throws ParseException {
         requireNonNull(email);
-        String trimmedemail = email.trim();
-        if (!Email.isValidEmail(trimmedemail)) {
+        String trimmedEmail = email.trim();
+        if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedemail);
+        return new Email(trimmedEmail);
     }
 
     //todo: for test of show feature only

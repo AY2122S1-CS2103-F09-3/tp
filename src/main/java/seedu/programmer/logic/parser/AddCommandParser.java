@@ -9,6 +9,7 @@ import static seedu.programmer.logic.parser.CliSyntax.PREFIX_STUDENT_ID;
 import java.util.stream.Stream;
 
 import seedu.programmer.logic.commands.AddCommand;
+import seedu.programmer.logic.commands.HelpCommand;
 import seedu.programmer.logic.parser.exceptions.ParseException;
 import seedu.programmer.model.student.ClassId;
 import seedu.programmer.model.student.Email;
@@ -35,6 +36,10 @@ public class AddCommandParser implements Parser<AddCommand> {
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
+
+        argMultimap.getValue(PREFIX_EMAIL).filter(x -> x.endsWith("u.nus.edu"))
+                .orElseThrow(()-> new ParseException(String
+                        .format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE)));
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).orElse(null));
         StudentId studentId = ParserUtil.parseStudentId(argMultimap.getValue(PREFIX_STUDENT_ID).orElse(null));
