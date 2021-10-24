@@ -1,11 +1,16 @@
 package seedu.programmer.ui;
 
+import static seedu.programmer.model.Model.PREDICATE_SHOW_ALL_STUDENTS;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
@@ -14,7 +19,6 @@ import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,6 +26,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.StackPane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import seedu.programmer.commons.core.GuiSettings;
@@ -32,9 +38,18 @@ import seedu.programmer.logic.commands.DownloadCommandResult;
 import seedu.programmer.logic.commands.ExitCommandResult;
 import seedu.programmer.logic.commands.HelpCommandResult;
 import seedu.programmer.logic.commands.ShowCommandResult;
+import seedu.programmer.logic.commands.UploadCommandResult;
 import seedu.programmer.logic.commands.exceptions.CommandException;
 import seedu.programmer.logic.parser.exceptions.ParseException;
+import seedu.programmer.model.Model;
+import seedu.programmer.model.ProgrammerError;
+import seedu.programmer.model.student.ClassId;
+import seedu.programmer.model.student.Email;
+import seedu.programmer.model.student.Name;
 import seedu.programmer.model.student.Student;
+import seedu.programmer.model.student.StudentId;
+
+import com.opencsv.CSVReader;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -197,6 +212,66 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Uploads CSV data into ProgrammerError's model storage.
+     */
+    @FXML
+    private void handleUpload(Model model) {
+        File chosenFile = promptUserForCsvFile();
+        List<Student> stuList = getStudentsFromCsv(chosenFile);
+        if (stuList == null) {
+            displayPopup("Incorrect number of columns!");
+            return;
+        }
+
+        ProgrammerError newPE = new ProgrammerError();
+        newPE.setStudents(stuList);
+        model.setProgrammerError(newPE);
+        model.updateFilteredStudentList(PREDICATE_SHOW_ALL_STUDENTS);
+        logger.info("Uploaded CSV data successfully!");
+    }
+
+    private File promptUserForCsvFile() {
+        FileChooser fileChooser = new FileChooser();
+        configureFileChooser(fileChooser);
+        return fileChooser.showOpenDialog(primaryStage);
+    }
+
+    private List<Student> getStudentsFromCsv(File chosenFile) {
+        List<Student> stuList = new ArrayList<>();
+
+        try {
+            CSVReader reader = new CSVReader(new FileReader(chosenFile));
+            String[] headers = reader.readNext();
+            if (headers.length != 4) {
+                return null;
+            }
+
+            String [] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                addStudentFromCsvLine(stuList, nextLine);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stuList;
+    }
+
+    private void addStudentFromCsvLine(List<Student> stuList, String[] nextLine) {
+        StudentId sid = new StudentId(nextLine[0]);
+        ClassId cid = new ClassId(nextLine[1]);
+        Name name = new Name(nextLine[2]);
+        Email email = new Email(nextLine[3]);
+        Student s = new Student(name, sid, cid, email);
+        stuList.add(s);
+    }
+
+    private static void configureFileChooser(final FileChooser fileChooser) {
+        fileChooser.setTitle("Select CSV file");
+        ExtensionFilter csvFilter = new ExtensionFilter("All CSVs", "*.csv");
+        fileChooser.getExtensionFilters().add(csvFilter);
+    }
+
+    /**
      * Downloads the JSON data as a CSV file to the user's chosen directory.
      */
     @FXML
@@ -329,6 +404,8 @@ public class MainWindow extends UiPart<Stage> {
                 handleShowResult(((ShowCommandResult) commandResult).getTarget());
             } else if (commandResult instanceof DownloadCommandResult) {
                 handleDownload();
+            } else if (commandResult instanceof UploadCommandResult) {
+                handleUpload(((UploadCommandResult) commandResult).getModel());
             }
 
             return commandResult;

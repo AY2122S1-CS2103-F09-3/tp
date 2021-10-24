@@ -24,8 +24,8 @@
             <ToolBar prefHeight="40.0" prefWidth="200.0" styleClass="background">
               <items>
                 <Button mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-                  <Button fx:id="helpButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
-                  <Button fx:id="downloadButton" layoutX="87.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleDownload" text="Download" />
+                <Button fx:id="helpButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+                <Button fx:id="downloadButton" layoutX="87.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleDownload" text="Download" />
               </items>
             </ToolBar>
 

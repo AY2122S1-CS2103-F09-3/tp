@@ -21,6 +21,7 @@ import seedu.programmer.logic.commands.HelpCommand;
 import seedu.programmer.logic.commands.ListCommand;
 import seedu.programmer.logic.commands.PurgeCommand;
 import seedu.programmer.logic.commands.ShowCommand;
+import seedu.programmer.logic.commands.UploadCommand;
 import seedu.programmer.logic.parser.exceptions.ParseException;
 
 /**
@@ -92,6 +93,9 @@ public class ProgrammerErrorParser {
 
         case DownloadCommand.COMMAND_WORD:
             return new DownloadCommand();
+
+        case UploadCommand.COMMAND_WORD:
+            return new UploadCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
