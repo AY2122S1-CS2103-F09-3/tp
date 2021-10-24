@@ -246,10 +246,18 @@ public class MainWindow extends UiPart<Stage> {
 
     private File promptUserForCsvFile() {
         FileChooser fileChooser = new FileChooser();
-        configureFileChooser(fileChooser);
+        configureCsvFileChooser(fileChooser);
         return fileChooser.showOpenDialog(primaryStage);
     }
 
+    /**
+     * Get a List of Students from CSV file of student data.
+     *
+     * @param chosenFile file chosen by user
+     * @return List of Students in the CSV file
+     * @throws IllegalArgumentException if CSV contains invalid input
+     * @throws IOException if error reading the file
+     */
     private List<Student> getStudentsFromCsv(File chosenFile) throws IllegalArgumentException, IOException {
         List<Student> stuList = new ArrayList<>();
 
@@ -268,6 +276,12 @@ public class MainWindow extends UiPart<Stage> {
         return stuList;
     }
 
+    /**
+     * Adds a Student to a List of Students.
+     *
+     * @param stuList Student list to add to
+     * @param nextLine line in a CSV file of student data
+     */
     private void addStudentFromCsvLine(List<Student> stuList, String[] nextLine) {
         StudentId sid = new StudentId(nextLine[0]);
         ClassId cid = new ClassId(nextLine[1]);
@@ -277,7 +291,12 @@ public class MainWindow extends UiPart<Stage> {
         stuList.add(s);
     }
 
-    private static void configureFileChooser(final FileChooser fileChooser) {
+    /**
+     * Configure file chooser to accept only CSV files
+     *
+     * @param fileChooser FileChooser object
+     */
+    private static void configureCsvFileChooser(final FileChooser fileChooser) {
         fileChooser.setTitle("Select CSV file");
         ExtensionFilter csvFilter = new ExtensionFilter("All CSVs", "*.csv");
         fileChooser.getExtensionFilters().add(csvFilter);
@@ -304,6 +323,11 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Display the pop-up message on the UI.
+     *
+     * @param message message to show user
+     */
     private void displayPopup(String message) {
         // We should not need to display an empty popup
         assert (message != null);
