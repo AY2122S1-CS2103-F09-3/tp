@@ -244,6 +244,11 @@ public class MainWindow extends UiPart<Stage> {
         logger.info("Uploaded CSV data successfully!");
     }
 
+    /**
+     * Show user a dialog to choose a CSV file.
+     *
+     * @return chosen CSV file
+     */
     private File promptUserForCsvFile() {
         FileChooser fileChooser = new FileChooser();
         configureCsvFileChooser(fileChooser);
