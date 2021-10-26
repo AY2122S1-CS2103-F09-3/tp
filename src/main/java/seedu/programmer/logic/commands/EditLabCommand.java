@@ -21,11 +21,11 @@ public class EditLabCommand extends Command {
     public static final String COMMAND_WORD = "editlab";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a lab number or total score."
-            + "\nParameters: "
+            + "Parameters: "
             + PREFIX_INDEX + "Index "
-            + PREFIX_LAB_NUM + "<Lab Title> "
-            + PREFIX_LAB_RESULT + "<Score>"
-            + "\nExample: " + COMMAND_WORD + " "
+            + PREFIX_LAB_NUM + "Lab Title "
+            + PREFIX_LAB_RESULT + "Score"
+            + "Example: " + COMMAND_WORD + " "
             + PREFIX_INDEX + "1 "
             + PREFIX_LAB_NUM + "1 "
             + PREFIX_LAB_RESULT + "15";

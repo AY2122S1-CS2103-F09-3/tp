@@ -22,10 +22,8 @@ If you are familiar with Unix commands, this is definitely for you!
     9. [Add Lab: `addlab`](#add-lab)
     10. [Edit Lab: `editlab`](#edit-lab)
     11. [Delete Lab: `dellab`](#delete-lab)
-    12. [Download data: `download`](#download-data)
-    13. [Upload data: `upload`](#upload-data)
-    14. [Exit: `exit`](#exit)
-
+    12. [Exit: `exit`](#exit)
+    13. [Download data](#download-data)
 - [Command Summary](#command-summary)
 
 ## <a name="quick-start"></a>Quick Start
@@ -197,17 +195,16 @@ Examples:
 
 - `dellab -t 1`: Deletes lab 1 for all students if it exists.
 
-### <a name="download-data"></a>10. Download Data
 
 ProgrammerError data can be downloaded to a CSV file by clicking the 'Download' button or the enter command `download`. The TA will need
 to specify the directory to download the file to.
 
-### <a name="upload-data"></a>11. Upload Data
+### <a name="download-data"></a>10. Upload Data
 
 ProgrammerError data can be uploaded by a CSV file by clicking the 'Upload' button or enter the command `upload`. The TA will need
 to specify the directory to upload the file from.
 
-### <a name="exit"></a>12. Exit: `exit`
+### <a name="exit"></a>11. Exit: `exit`
 
 Exits ProgrammerError and closes the GUI.
 
