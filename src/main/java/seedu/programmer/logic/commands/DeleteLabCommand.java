@@ -18,7 +18,7 @@ public class DeleteLabCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes a lab from all the students in the list. "
             + "\nParameters: "
-            + PREFIX_LAB_NUM + "<Lab Title> "
+            + PREFIX_LAB_NUM + "<Lab Title>"
             + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_LAB_NUM + "1 ";
 
