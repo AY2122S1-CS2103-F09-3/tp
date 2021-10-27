@@ -1,6 +1,5 @@
 ---
-layout: page
-title: User Guide
+layout: page title: User Guide
 ---
 
 ProgrammerError (P|E) is a desktop app for managing students' information, optimized for use via a Command Line
@@ -46,7 +45,8 @@ If you are familiar with Unix commands, this is definitely for you!
    open the help window.<br>
    Some example commands you can try:
 
-    * **`add -n Sherwin -sid A1234567X -cid B01 -email e0523451@u.nus.edu`**: Adds a student named `Sherwin` to the PE with his Student ID, Class ID and Email.
+    * **`add -n Sherwin -sid A1234567X -cid B01 -email e0523451@u.nus.edu`**: Adds a student named `Sherwin` to the PE
+      with his Student ID, Class ID and Email.
 
     * **`filter -sid A1234567X`** Filters the list to display student(s) whose student ID contains `A1234567X'
 
@@ -109,11 +109,11 @@ Examples:
 
 ![UI](images/addStudent.png)
 
-- `add -n Sherwin -sid A1234567X -cid B01 -email e0542421@u.nus.edu`: Adds the student called Sherwin with student ID A1234567X and class ID B01 and 
-  email e0542421@u.nus.edu to ProgrammerError.
+- `add -n Sherwin -sid A1234567X -cid B01 -email e0542421@u.nus.edu`: Adds the student called Sherwin with student ID
+  A1234567X and class ID B01 and email e0542421@u.nus.edu to ProgrammerError.
 
-- `add -n Betsy -sid A2345678X -cid B02 -email e043245@u.nus.edu`: Adds the student called Betsy with student ID A2345678X and class ID B02 to and 
-  email e043245@u.nus.edu ProgrammerError.
+- `add -n Betsy -sid A2345678X -cid B02 -email e043245@u.nus.edu`: Adds the student called Betsy with student ID
+  A2345678X and class ID B02 to and email e043245@u.nus.edu ProgrammerError.
 
 ### <a name="filter-student"></a>6. Filter List: `filter`
 
@@ -137,8 +137,8 @@ Examples:
 
 ### <a name="edit-student"></a>7. Edit Student's Details or Grade : `edit`
 
-Edits the details or grade of an existing student's in the PE. Take note that 1-indexing is used here as according to the displayed
-list.
+Edits the details or grade of an existing student's in the PE. Take note that 1-indexing is used here as according to
+the displayed list.
 
 Format:`edit <INDEX_IN_LIST> -n <NAME> -sid <STUDENT_ID> -email <EMAIL>`
 Format:`edit <INDEX_IN_LIST> -t <LAB_NUMBER> -s <ACTUAL_SCORE>`
@@ -185,7 +185,7 @@ Format: `editlab -t <LAB_NUM> -nt <NEW_LAB_NUM> -ts <NEW_LAB_SCORE>`
 Examples:
 
 - `editlab -t 1 -ts 30`: Changes the total score of lab 1 to 30 for all students.
-  
+
 - `editlab -t 1 -nt 2`: Changes the number of an existing lab from 1 to 2 for all students.
 
 ### <a name="delete-lab"></a>11. Delete Lab: `dellab`
@@ -200,19 +200,17 @@ Examples:
 
 ### <a name="download-data"></a>10. Download Data
 
-ProgrammerError data can be downloaded to a CSV file by clicking the 'Download' button or the enter command `download`. The TA will need
-to specify the directory to download the file to.
+ProgrammerError data can be downloaded to a CSV file by clicking the 'Download' button or the enter command `download`.
+The TA will need to specify the directory to download the file to.
 
 ### <a name="upload-data"></a>11. Upload Data
 
-ProgrammerError data can be uploaded by a CSV file by clicking the 'Upload' button or enter the command `upload`. The TA will need
-to specify the directory to upload the file from.
+ProgrammerError data can be uploaded by a CSV file by clicking the 'Upload' button or enter the command `upload`. The TA
+will need to specify the directory to upload the file from.
 
 ### <a name="exit"></a>12. Exit: `exit`
 
 Exits ProgrammerError and closes the GUI.
-
-
 
 ## <a name="command-summary"></a>Command Summary
 

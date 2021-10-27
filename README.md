@@ -5,7 +5,8 @@
 ![Ui](docs/images/Ui2_v1.3b.png)
 
 * ProgrammerError (P|E in short) is an application developed based on the `AddressBook Level 3` application.
-* This is an application made for CS2100 Teaching Assistants (TAs) to track their students' task progress and performance
+* This is an application made for CS2100 Teaching Assistants (TAs) to track their students' task progress and
+  performance
 
 ## Feature List
 
@@ -22,31 +23,32 @@
     - Name, Student ID, Class ID, Email as a placeholder for default
     - `add -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>`
 6. Add Lab records with Lab number and total score for all students
-   - allow user to create new Lab report instances with a Lab number and total score for that lab report. 
-   - e.g. `addlab -t 1 -ts 20`
+    - allow user to create new Lab report instances with a Lab number and total score for that lab report.
+    - e.g. `addlab -t 1 -ts 20`
 7. Edit Lab records with Lab number and total score for all students
-   - allow user to edit existing Lab report title and total score.
-   - `editlab -t <LAB_NUM> -nt <NEW_LAB_NUM> -ts <NEW_TOTAL_SCORE>`
+    - allow user to edit existing Lab report title and total score.
+    - `editlab -t <LAB_NUM> -nt <NEW_LAB_NUM> -ts <NEW_TOTAL_SCORE>`
 8. Delete Lab records with Lab number and total score for all students
     - allow user delete an existing Lab report instances.
     - `dellab -t <LAB_NUM>`
 9. Filters the records of individual students using query parameters
-    - Filters the list of students based on any combination of the following parameters: Name, Student ID, Class ID, Email
+    - Filters the list of students based on any combination of the following parameters: Name, Student ID, Class ID,
+      Email
     - `filter -cid <CLASS_ID>`
 10. Edit a student's record
-     - Edit a student's details at a particular given index off the list
-     - Details that can be edited include Name Student ID, Class ID, Email, Lab scores
-     - `edit <INDEX> -cid <NEW CLASS_ID>`
+    - Edit a student's details at a particular given index off the list
+    - Details that can be edited include Name Student ID, Class ID, Email, Lab scores
+    - `edit <INDEX> -cid <NEW CLASS_ID>`
 11. Delete a student's record
-     - Delete the entry of the entire student based on a given index off the list
-     - `delete <INDEX>`
+    - Delete the entry of the entire student based on a given index off the list
+    - `delete <INDEX>`
 12. Automatically Sorted Class Records
-     - List will always display the students in a sorted order
-     - Sorting key(s): Class ID then Student's Name
-13. Save data to Hard Disk 
+    - List will always display the students in a sorted order
+    - Sorting key(s): Class ID then Student's Name
+13. Save data to Hard Disk
     - Save whenever there is a change (create/edit/delete)
-14. Download ProgrammerError data to a CSV file 
-    - Allows user to download a copy of the student list in CSV file format. 
+14. Download ProgrammerError data to a CSV file
+    - Allows user to download a copy of the student list in CSV file format.
 15. Upload ProgrammerError data from a CSV file
     - Allows user to upload a copy of the student list in CSV file format.
 
