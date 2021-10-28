@@ -53,14 +53,14 @@
               </VBox>
                   <SplitPane fx:id="sidePanel" dividerPositions="0.1" minWidth="340.0" orientation="VERTICAL" prefWidth="340.0">
                      <items>
-                        <StackPane fx:id="studentParticularPlaceholder" maxHeight="260.0" prefHeight="260.0" styleClass="split-pane-divider" />
+                        <StackPane fx:id="studentParticularPlaceholder" maxHeight="260.0" prefHeight="260.0" />
                         <StackPane fx:id="labResultListPanelPlaceholder" />
                      </items>
                   </SplitPane>
                </items>
             </SplitPane>
 
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
+        <StackPane fx:id="statusbarPlaceholder" styleClass="split-pane-divider" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
   </scene>

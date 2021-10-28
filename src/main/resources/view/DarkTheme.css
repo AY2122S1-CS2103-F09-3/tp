@@ -352,3 +352,7 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 1 0 1;
+}
