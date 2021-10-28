@@ -141,7 +141,9 @@ public class MainWindow extends UiPart<Stage> {
         sideDivider.positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (sideDivider.getPosition() > 0.3) {
+                if (sideDivider.getPosition() < 0.1) {
+                    sideDivider.setPosition(0.1);
+                } else if (sideDivider.getPosition() > 0.3) {
                     sideDivider.setPosition(0.3);
                 }
             }
