@@ -103,7 +103,7 @@ public class EditLabCommandTest {
         //
         //        String expectedMessage2 = String.format(EditLabCommand.MESSAGE_EDIT_LAB_SUCCESS, newLab2);
         //
-        //        Model expectedModel2 = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        //  Model expectedModel2 = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
         //
         //        assertCommandSuccess(editLabCommand2, model, expectedMessage2, expectedModel2);
     }
