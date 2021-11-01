@@ -4,12 +4,12 @@ import seedu.programmer.model.student.Lab;
 
 public class LabBuilder {
     public static final int DEFAULT_TITLE = 1;
-    public static final Double DEFAULT_VALUE = null;
-    public static final Double DEFAULT_TOTAL = 20.0;
+    public static final int DEFAULT_VALUE = 0;
+    public static final int DEFAULT_TOTAL = 20;
 
     private int labNum;
-    private Double value;
-    private Double total;
+    private int value;
+    private int total;
 
     /**
      * Creates a {@code labBuilder} with the default details.
@@ -40,7 +40,7 @@ public class LabBuilder {
     /**
      * Sets the {@code value} of the {@code lab} that we are building.
      */
-    public LabBuilder withResult(Double value) {
+    public LabBuilder withResult(int value) {
         this.value = value;
         return this;
     }
@@ -48,7 +48,7 @@ public class LabBuilder {
     /**
      * Sets the {@code total} of the {@code lab} that we are building.
      */
-    public LabBuilder withTotal(Double total) {
+    public LabBuilder withTotal(int total) {
         this.total = total;
         return this;
     }

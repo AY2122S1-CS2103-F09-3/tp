@@ -39,7 +39,7 @@ public class AddLabCommandParser implements Parser<AddLabCommand> {
         }
 
         int labNum = ParserUtil.parseLabNum(argMultimap.getValue(PREFIX_LAB_NUM).orElse(null));
-        Double total = ParserUtil.parseTotal(argMultimap.getValue(PREFIX_LAB_TOTAL).orElse(null));
+        int total = ParserUtil.parseTotal(argMultimap.getValue(PREFIX_LAB_TOTAL).orElse(null));
         Lab labResult = new Lab(labNum, total);
         return new AddLabCommand(labResult);
     }

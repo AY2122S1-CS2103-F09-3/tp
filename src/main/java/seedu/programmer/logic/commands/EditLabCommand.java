@@ -39,13 +39,13 @@ public class EditLabCommand extends Command {
     public static final String LAB_NUM_CONSTRAINTS = "The lab number doesn't exist.";
 
     private final int newLabNum;
-    private final Double total;
+    private final int total;
     private final Lab original;
 
     /**
      * @param original the lab to be edited.
      * */
-    public EditLabCommand(Lab original, int newLabNum, Double total) {
+    public EditLabCommand(Lab original, int newLabNum, int total) {
         this.original = original;
         this.newLabNum = newLabNum;
         this.total = total;
@@ -53,7 +53,7 @@ public class EditLabCommand extends Command {
     /**
      * @param original the lab to be edited.
      * */
-    public EditLabCommand(Lab original, Double total) {
+    public EditLabCommand(Lab original, Integer total) {
         this.original = original;
         this.total = total;
         this.newLabNum = 0;

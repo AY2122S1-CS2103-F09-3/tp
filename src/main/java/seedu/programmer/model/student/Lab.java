@@ -7,15 +7,15 @@ public class Lab {
     public static final String LAB_SCORE_MESSAGE_CONSTRAINTS = "The total score should be a positive value.";
 
     private int labNum;
-    private Double actualScore;
-    private Double totalScore;
+    private int actualScore;
+    private int totalScore;
 
     /**
      * @param labNum the labNum of the lab
      * @param actualScore  the score obtained by the student
      * @param totalScore the total score
      * */
-    public Lab(int labNum, Double actualScore, Double totalScore) {
+    public Lab(int labNum, int actualScore, int totalScore) {
         requireNonNull(totalScore);
         this.labNum = labNum;
         this.actualScore = actualScore;
@@ -25,10 +25,10 @@ public class Lab {
     /**
      * @param labNum the labNum of the lab
      * @param totalScore the total score */
-    public Lab(int labNum, Double totalScore) {
+    public Lab(int labNum, int totalScore) {
         requireNonNull(totalScore);
         this.labNum = labNum;
-        this.actualScore = Double.NaN;
+        this.actualScore = 0;
         this.totalScore = totalScore;
     }
 
@@ -45,15 +45,15 @@ public class Lab {
         return labNum;
     }
 
-    public Double getActualScore() {
+    public int getActualScore() {
         return actualScore;
     }
 
-    public Double getTotalScore() {
+    public int getTotalScore() {
         return totalScore;
     }
 
-    public void updateActualScore(Double value) {
+    public void updateActualScore(int value) {
         this.actualScore = value;
     }
 
@@ -71,14 +71,14 @@ public class Lab {
      * Updates the totalScore of the lab
      * @param total new total score
      */
-    public void updateTotal(Double total) {
-        if (total != null) {
+    public void updateTotal(int total) {
+        if (total != 0) {
             this.totalScore = total;
         }
     }
 
     public boolean isMarked() {
-        return !actualScore.equals(Double.NaN);
+        return !(actualScore == 0);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class Lab {
     /**
      * Returns true if a given string is a valid score.
      */
-    public static boolean isValidScore (Double score) {
+    public static boolean isValidScore (Integer score) {
         return score >= 0;
     }
 

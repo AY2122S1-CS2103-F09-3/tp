@@ -95,21 +95,17 @@ public class SampleDataUtil {
 
     public static Lab[] getSampleLab() {
         return new Lab[]{
-            new Lab(1, 10.0),
-            new Lab(2, 20.0),
-            new Lab(3, 24.0),
-            new Lab(4, 30.0),
-            new Lab(5, 15.0)
+            new Lab(1, 15),
+            new Lab(2, 20),
         };
     }
 
-    public static double getRandomLabScore (Lab lab) {
+    public static int getRandomLabScore (Lab lab) {
         Random r = new Random();
-        double minScore = 0;
-        double maxScore = lab.getTotalScore();
-        double score = minScore + (maxScore - minScore) * r.nextDouble();
-        int dp = (int) Math.pow(10, 1);
-        return (double) Math.round(score * dp) / dp;
+        int minScore = 0;
+        int maxScore = lab.getTotalScore();
+        int score = minScore + (maxScore - minScore) * r.nextInt();
+        return score;
     }
 
     public static ReadOnlyProgrammerError getSampleProgrammerError() {
@@ -118,8 +114,8 @@ public class SampleDataUtil {
             Lab[] sampleLabs = getSampleLab();
             for (int i = 0; i < sampleLabs.length; i++) {
                 Lab sampleLab = sampleLabs[i];
-                if (i < 3) { // only add random scores to 2 labs
-                    double randomLabScore = getRandomLabScore(sampleLab);
+                if (i == 0) { // only add random scores to 1 labs
+                    int randomLabScore = getRandomLabScore(sampleLab);
                     sampleLab.updateActualScore(randomLabScore);
                 }
                 sampleStudent.addLab(sampleLab);

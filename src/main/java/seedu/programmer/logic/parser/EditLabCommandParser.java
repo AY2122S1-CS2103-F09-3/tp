@@ -48,7 +48,7 @@ public class EditLabCommandParser implements Parser<EditLabCommand> {
             // Provided new lab number and total score
             int labNum = ParserUtil.parseLabNum(argMultimap.getValue(PREFIX_LAB_NUM).orElse(null));
             int newLabNum = ParserUtil.parseLabNum(argMultimap.getValue(PREFIX_LAB_NEW_LAB_NUM).orElse(null));
-            Double total = ParserUtil.parseResult(argMultimap.getValue(PREFIX_LAB_TOTAL).orElse(null));
+            int total = ParserUtil.parseResult(argMultimap.getValue(PREFIX_LAB_TOTAL).orElse(null));
             Lab labResult = new Lab(labNum);
             return new EditLabCommand(labResult, newLabNum, total);
         } else if (argMultimap.getValue(PREFIX_LAB_NEW_LAB_NUM).isPresent()) {
@@ -62,7 +62,7 @@ public class EditLabCommandParser implements Parser<EditLabCommand> {
         } else {
             assert(argMultimap.getValue(PREFIX_LAB_TOTAL).isPresent());
             int labNum = ParserUtil.parseLabNum(argMultimap.getValue(PREFIX_LAB_NUM).orElse(null));
-            Double total = ParserUtil.parseResult(argMultimap.getValue(PREFIX_LAB_TOTAL).orElse(null));
+            int total = (Integer) ParserUtil.parseResult(argMultimap.getValue(PREFIX_LAB_TOTAL).orElse(null));
             Lab labResult = new Lab(labNum);
             return new EditLabCommand(labResult, total);
         }

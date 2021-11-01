@@ -99,11 +99,11 @@ public class EditCommand extends Command {
         ClassId updatedClassId = editStudentDescriptor.getClassId().orElse(studentToEdit.getClassId());
         Email updatedEmail = editStudentDescriptor.getEmail().orElse(studentToEdit.getEmail());
         Lab updatedLab = editStudentDescriptor.getLab().orElse(null);
-        Double updatedResult = null;
+        int updatedResult = 0;
         if (updatedLab != null) {
-            updatedResult = editStudentDescriptor.getResult().orElse(null);
+            updatedResult = editStudentDescriptor.getResult().orElse(0);
             int labNum = updatedLab.getLabNum();
-            Double currTotalScore;
+            int currTotalScore;
             try {
                 currTotalScore = studentToEdit.getLab(labNum).getTotalScore();
             } catch (NullPointerException e) { //when getLab does not find anything
@@ -112,7 +112,7 @@ public class EditCommand extends Command {
             updatedLab.updateTotal(currTotalScore);
         }
 
-        if (updatedLab != null && updatedResult != null) {
+        if (updatedLab != null && updatedResult != 0) {
             System.out.println(updatedResult);
             studentToEdit.editLabScore(updatedLab, updatedResult);
             ObservableList<Lab> updatedList = studentToEdit.getLabList();
@@ -150,7 +150,7 @@ public class EditCommand extends Command {
         private StudentId studentId;
         private ClassId classId;
         private Email email;
-        private Double result;
+        private int result;
         private Lab lab;
         private ObservableList<Lab> labList;
 
@@ -207,7 +207,7 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setLab(Lab lab, Double result) {
+        public void setLab(Lab lab, int result) {
             this.lab = lab;
             this.result = result;
         }
@@ -220,7 +220,7 @@ public class EditCommand extends Command {
             return Optional.ofNullable(lab);
         }
 
-        public Optional<Double> getResult() {
+        public Optional<Integer> getResult() {
             return Optional.ofNullable(result);
         }
 
