@@ -39,11 +39,11 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_BOB = "e0532115@u.nus.edu";
 
     public static final Integer VALID_LAB_NO = 1;
-    public static final Double VALID_ACTUAL_SCORE = 15.0;
-    public static final Double VALID_TOTAL_SCORE = 20.0;
+    public static final Integer VALID_ACTUAL_SCORE = 15;
+    public static final Integer VALID_TOTAL_SCORE = 20;
     public static final Integer VALID_LAB_NO2 = 1;
-    public static final Double VALID_ACTUAL_SCORE2 = 15.0;
-    public static final Double VALID_TOTAL_SCORE2 = 20.0;
+    public static final Integer VALID_ACTUAL_SCORE2 = 15;
+    public static final Integer VALID_TOTAL_SCORE2 = 20;
     public static final String NEW_LAB_NUM = " " + PREFIX_LAB_NEW_LAB_NUM + VALID_LAB_NO2;
     public static final String LAB_NUM = " " + PREFIX_LAB_NUM + VALID_LAB_NO;
     public static final String LAB_TOTAL = " " + PREFIX_LAB_TOTAL + VALID_ACTUAL_SCORE;
@@ -53,8 +53,8 @@ public class CommandTestUtil {
     public static final String LAB_RESULT2 = " " + PREFIX_LAB_RESULT + VALID_TOTAL_SCORE2;
     public static final String INVALID_NEW_LAB_NUM = " " + PREFIX_LAB_NUM + (-2);
     public static final String INVALID_LAB_NUM = " " + PREFIX_LAB_NUM + (-1);
-    public static final String INVALID_LAB_TOTAL = " " + PREFIX_LAB_TOTAL + -10.0;
-    public static final String INVALID_LAB_RESULT = " " + PREFIX_LAB_RESULT + -20.0;
+    public static final String INVALID_LAB_TOTAL = " " + PREFIX_LAB_TOTAL + -10;
+    public static final String INVALID_LAB_RESULT = " " + PREFIX_LAB_RESULT + -20;
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;

@@ -54,7 +54,7 @@ public class EditLabCommandParserTest {
         // invalid labTotal
         assertParseFailure(parser,
                 LAB_NUM + NEW_LAB_NUM + INVALID_LAB_TOTAL,
-                String.format(MESSAGE_UNKNOWN_ARGUMENT_FLAG, "[-10.0]", EditLabCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_UNKNOWN_ARGUMENT_FLAG, "[-10]", EditLabCommand.MESSAGE_USAGE));
     }
 
     @Test

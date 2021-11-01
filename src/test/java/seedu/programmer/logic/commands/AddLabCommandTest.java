@@ -29,8 +29,8 @@ public class AddLabCommandTest {
     public static void oneTimeSetUp() {
         // Initialize sample students and Commands once before all tests
         validLab = new LabBuilder().build();
-        sampleLabA = new LabBuilder().withLabNum(10).withTotal(20.0).build();
-        Lab sampleLabB = new LabBuilder().withLabNum(11).withTotal(30.0).build();
+        sampleLabA = new LabBuilder().withLabNum(10).withTotal(20).build();
+        Lab sampleLabB = new LabBuilder().withLabNum(11).withTotal(30).build();
         sampleCommandA = new AddLabCommand(sampleLabA);
         sampleCommandB = new AddLabCommand(sampleLabB);
     }
