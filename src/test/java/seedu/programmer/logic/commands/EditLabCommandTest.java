@@ -97,14 +97,14 @@ public class EditLabCommandTest {
 
         //todo
         // only change totalScore
-//        Lab labToEdit2 = getTypicalLabList().get(NUMBER_SECOND_LAB);
-//        EditLabCommand editLabCommand2 = new EditLabCommand(labToEdit2, newLabTotal);
-//        Lab newLab2 = new Lab(labToEdit2.getLabNum(), newLabTotal);
-//
-//        String expectedMessage2 = String.format(EditLabCommand.MESSAGE_EDIT_LAB_SUCCESS, newLab2);
-//
-//        Model expectedModel2 = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
-//
-//        assertCommandSuccess(editLabCommand2, model, expectedMessage2, expectedModel2);
+        //        Lab labToEdit2 = getTypicalLabList().get(NUMBER_SECOND_LAB);
+        //        EditLabCommand editLabCommand2 = new EditLabCommand(labToEdit2, newLabTotal);
+        //        Lab newLab2 = new Lab(labToEdit2.getLabNum(), newLabTotal);
+        //
+        //        String expectedMessage2 = String.format(EditLabCommand.MESSAGE_EDIT_LAB_SUCCESS, newLab2);
+        //
+        //        Model expectedModel2 = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        //
+        //        assertCommandSuccess(editLabCommand2, model, expectedMessage2, expectedModel2);
     }
 }
