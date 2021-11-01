@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.stage.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
 
+<?import javafx.scene.control.ScrollPane?>
 <fx:root minHeight="600" minWidth="450" title="Dashboard" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/programmer_error.png" />
@@ -21,21 +23,19 @@
       </stylesheets>
 
       <VBox>
-        <StackPane fx:id="overallStatsPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
-
-        <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
-           <items>
-              <VBox fx:id="studentList" minWidth="340" prefWidth="340" styleClass="pane-with-border">
-                <padding>
-                  <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
-                <StackPane fx:id="labsMarkedList" VBox.vgrow="ALWAYS" />
-              </VBox>
-           </items>
+        <SplitPane dividerPositions="0.25" VBox.vgrow="NEVER" orientation="VERTICAL" centerShape="false">
+          <items>
+            <StackPane fx:id="overallStatsPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER" minHeight="150" maxHeight="150">
+              <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+              </padding>
+            </StackPane>
+            <ScrollPane fx:id="labsMarkedList" VBox.vgrow="ALWAYS" fitToWidth="true" >
+              <content>
+                <VBox prefWidth="200" alignment="center" fx:id="labVBox" styleClass="pane-with-border" />
+              </content>
+            </ScrollPane>
+          </items>
         </SplitPane>
       </VBox>
     </Scene>

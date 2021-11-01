@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -22,27 +21,12 @@
         <children>
                <Label fx:id="description" text="Label" />
                <TableView fx:id="featureTable" editable="true" prefHeight="378.0" prefWidth="470.0" />
-
-          <HBox alignment="BOTTOM_LEFT" prefHeight="72.0" prefWidth="470.0">
-            <children>
-              <Label fx:id="helpMessage" prefHeight="78.0" prefWidth="369.0" text="Label" wrapText="true">
-                <HBox.margin>
-                  <Insets right="5.0" />
-                </HBox.margin>
-              </Label>
-              <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" prefHeight="25.0" prefWidth="75.0" text="Copy URL" wrapText="true">
-                <HBox.margin>
-                  <Insets left="5.0" />
-                </HBox.margin>
-              </Button>
-            </children>
-            <opaqueInsets>
-              <Insets bottom="10.0" left="5.0" right="10.0" top="5.0" />
-            </opaqueInsets>
-            <padding>
-              <Insets bottom="10.0" left="5.0" right="10.0" top="5.0" />
-            </padding>
-          </HBox>
+               <HBox alignment="CENTER">
+                  <children>
+              <Label fx:id="helpMessage" alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="394.0" text="Label" textOverrun="CLIP" wrapText="true" />
+              <Button fx:id="copyButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#copyUrl" prefHeight="25.0" prefWidth="75.0" text="Copy URL" textAlignment="JUSTIFY" wrapText="true" />
+                  </children>
+               </HBox>
         </children>
       </VBox>
     </Scene>

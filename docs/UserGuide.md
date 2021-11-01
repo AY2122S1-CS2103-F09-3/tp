@@ -18,7 +18,7 @@ If you are familiar with Unix commands, this is definitely for you!
         3. [Exit: `exit`](#exit)
     2. [Data Features](#data-features)
         1. [Fill Sample Data: `fill`](#fill-sample-data)
-        2. [Purge All Data: `purge`](#purge-all-data)
+        2. [Purge All Data: ``](#-all-data)
         3. [Download Data: `download`](#download-data)
         4. [Upload Data: `upload`](#upload-data)
     3. [Student Features](#student-features)
@@ -59,6 +59,9 @@ If you are familiar with Unix commands, this is definitely for you!
 
 **Notes about the command format (Unix Command Syntax):**
 - Similar to Unix CLI, the up and down arrow keys can be used to navigate the history of commands executed.
+  - Up Arrow Key: Navigate to an older command.
+  - Down Arrow Key: Navigate to a more recent command.
+  - Command will only be stored after `Enter` has been pressed.
 - Flags will be used to specify different options for the commands. For example, the `-sid` flag can be used to specify
   a student's student ID.
 - Parameters can be in any order. <br> e.g. if the command specifies `-n NAME -sid STUDENT_ID`
@@ -94,7 +97,7 @@ Exits ProgrammerError and closes the GUI.
 If no data present, fills it with sample data. Otherwise, throws an error message.
 
 ### <a name="purge-all-data"></a>2.2 Purge all Data: `purge`
-Purges all pre-existing sample data to start adding your own data or purge the user data. Clears all data in PE.
+Clears all data in PE. This can be used to delete pre-existing sample data or existing user data.
 
 ### <a name="download-data"></a>2.3 Download Data `download` or F3 on keyboard
 All current students' data can be downloaded to a CSV file. The TA will need to select the directory to download the
@@ -127,7 +130,7 @@ Example:
 Edits the details or grade of an existing student's in the PE. Take note that 1-indexing is used here as according to
 the displayed list.
 
-Format 1:`edit <INDEX_IN_LIST> -n <NAME> -sid <STUDENT_ID> -email <EMAIL>`
+Format 1:`edit <INDEX_IN_LIST> -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>`
 
 Format 2:`edit <INDEX_IN_LIST> -ln <LAB_NUMBER> -s <ACTUAL_SCORE>`
 
@@ -145,7 +148,7 @@ Format: `delete <STUDENT_INDEX>`
 - Deletes the student at `<STUDENT_INDEX>`. (1-indexed)
 
 Example:
-- `delete 23` Deletes the data of the student at index 1
+- `delete 23` Deletes the data of the student at index 23
 
 ### <a name="filter-student"></a>3.4 Filter Students: `filter`
 Filter the students in ProgrammerError based on the specified arguments provided (name, student ID, class ID and email).
@@ -216,17 +219,18 @@ Example:
 
 Command | Format & Examples
 --------| ----------------------
-**Add** | `add -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID>`
+**Add** | `add -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>` 
 **Add Lab** | `addlab -ln <LAB_NUM> -ts <TOTAL_SCORE>`
 **Delete** | `delete <INDEX_IN_LIST>`
 **Dashboard** | `dashboard`
 **Delete Lab** | `dellab -ln <LAB_NUM>`
 **Download** | `download`
-**Edit** | `edit <INDEX_IN_LIST> -n <NAME> -sid <STUDENT_ID>`
+**Edit** | Format 1:`edit <INDEX_IN_LIST> -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>` <br/> Format 2:`edit <INDEX_IN_LIST> -ln <LAB_NUMBER> -s <ACTUAL_SCORE>`
 **Edit Lab** | `editlab -ln <LAB_NUM> -nln <NEW_LAB_NUM> -ts <NEW_LAB_SCORE>`
 **Exit** | `exit`
-**Help** | `help`
 **Fill** | `fill`
 **Filter** | `filter -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>`
+**Help** | `help`
 **Purge** | `purge`
+**Show** | `show <INDEX_IN_LIST>`
 **Upload** | `upload`

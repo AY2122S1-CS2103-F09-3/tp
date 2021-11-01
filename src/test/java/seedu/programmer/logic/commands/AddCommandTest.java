@@ -20,6 +20,7 @@ import seedu.programmer.model.Model;
 import seedu.programmer.model.ProgrammerError;
 import seedu.programmer.model.ReadOnlyProgrammerError;
 import seedu.programmer.model.ReadOnlyUserPrefs;
+import seedu.programmer.model.student.DisplayableObject;
 import seedu.programmer.model.student.Lab;
 import seedu.programmer.model.student.Student;
 import seedu.programmer.testutil.StudentBuilder;
@@ -154,11 +155,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Lab> showLabResultList(Student target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void setStudent(Student target, Student editedStudent) {
             throw new AssertionError("This method should not be called.");
         }
@@ -169,23 +165,18 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Student> getSelectedStudentWrapper() {
+        public ObservableList<DisplayableObject> getSelectedInformation() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setSelectedStudentWrapper(Student target) {
-
-        }
-
-        @Override
-        public void clearSelectedStudentWrapper() {
+        public Student getSelectedStudent() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Lab> getSelectedLabs() {
-            throw new AssertionError("This method should not be called.");
+        public void setSelectedStudent(Student target) {
+
         }
 
         @Override
@@ -194,7 +185,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void clearSelectedLabs() {
+        public void clearSelectedInformation() {
             throw new AssertionError("This method should not be called.");
         }
 

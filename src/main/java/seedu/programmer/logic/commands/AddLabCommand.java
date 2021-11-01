@@ -60,10 +60,10 @@ public class AddLabCommand extends Command {
             }
             model.setStudent(target, std);
         }
-        if (!model.getSelectedStudentWrapper().isEmpty()) {
-            Student selectedStudent = model.getSelectedStudentWrapper().get(0).copy();
+        if (!model.getSelectedInformation().isEmpty()) {
+            Student selectedStudent = model.getSelectedStudent().copy();
             selectedStudent.addLab(result);
-            model.setSelectedStudentWrapper(selectedStudent);
+            model.setSelectedStudent(selectedStudent);
             model.setSelectedLabs(selectedStudent.getLabList());
         }
         return new CommandResult(String.format(MESSAGE_ADD_LAB_SUCCESS, result));

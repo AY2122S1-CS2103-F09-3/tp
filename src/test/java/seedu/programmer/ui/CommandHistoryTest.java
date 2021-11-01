@@ -72,8 +72,8 @@ public class CommandHistoryTest {
         commandHistory.add("two");
         commandHistory.add("three");
 
-        // getPrevCommand has not been executed --> expect the latest executed command
-        assertEquals(commandHistory.getNextCommand(), "three");
+        // getPrevCommand has not been executed --> expect the default empty command
+        assertEquals(commandHistory.getNextCommand(), "");
 
         // Execute getPrevCommand to the oldest command
         commandHistory.getPrevCommand();
@@ -81,9 +81,9 @@ public class CommandHistoryTest {
         commandHistory.getPrevCommand();
 
         // Retrieve the next command
-        assertEquals(commandHistory.getNextCommand(), "one");
-        // Retrieve the next command
         assertEquals(commandHistory.getNextCommand(), "two");
+        // Retrieve the next command
+        assertEquals(commandHistory.getNextCommand(), "three");
     }
 
     @Test

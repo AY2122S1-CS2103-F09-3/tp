@@ -62,7 +62,21 @@ public class ArgumentTokenizer {
         if (str.length() == 0) {
             return false;
         }
-        return Character.toString(str.charAt(0)).equals(PREFIX_SYMBOL.getPrefix());
+        String firstCharacter = Character.toString(str.charAt(0));
+        if (!firstCharacter.equals(PREFIX_SYMBOL.getPrefix())) {
+            return false;
+        }
+        String restOfString = str.substring(1);
+
+        if (isValidNumericalInput(restOfString)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean isValidNumericalInput(String restOfString) {
+        return restOfString.matches("^(0|[1-9]\\d*)?(\\.\\d+)?(?<=\\d)$");
     }
 
     /**

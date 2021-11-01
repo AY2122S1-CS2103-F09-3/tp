@@ -10,6 +10,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.programmer.model.student.comparator.SortByClass;
+import seedu.programmer.model.student.comparator.SortByLabNumber;
 import seedu.programmer.model.student.comparator.SortByStudentName;
 import seedu.programmer.model.student.exceptions.DuplicateStudentException;
 import seedu.programmer.model.student.exceptions.StudentNotFoundException;
@@ -30,8 +31,7 @@ public class UniqueStudentList implements Iterable<Student> {
     private final ObservableList<Student> internalList = FXCollections.observableArrayList();
     private final ObservableList<Student> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
-    private ObservableList<Student> selectedStudentWrapper = FXCollections.observableArrayList();
-    private ObservableList<Lab> selectedLabs = FXCollections.observableArrayList();
+    private ObservableList<DisplayableObject> selectedInformation = FXCollections.observableArrayList();
     //Keep track of the existing labs
     private List<Lab> labsTracker = new ArrayList<>();
 
@@ -170,45 +170,48 @@ public class UniqueStudentList implements Iterable<Student> {
     }
 
     /**
-     * Puts the target student in the wrapper.
+     * Returns the selected information.
      */
-    public void setSelectedStudentWrapper(Student selectedStudent) {
-        this.selectedStudentWrapper.clear();
-        this.selectedStudentWrapper.add(selectedStudent);
+    public ObservableList<DisplayableObject> getSelectedInformation() {
+        return this.selectedInformation;
     }
 
     /**
-     * Returns the selected student wrapped in an ObservableList.
+     * Returns the selected student.
      */
-    public ObservableList<Student> getSelectedStudentWrapper() {
-        return this.selectedStudentWrapper;
+    public Student getSelectedStudent() {
+        return (Student) this.selectedInformation.get(0);
     }
 
     /**
-     * Clears the selected student in the wrapper.
+     * Changes the selected student to the one specified by the input.
      */
-    public void clearSelectedStudentWrapper() {
-        this.selectedStudentWrapper.clear();
-    }
-
-    /**
-     * Returns the selected labs.
-     */
-    public ObservableList<Lab> getSelectedLabs() {
-        return this.selectedLabs;
+    public void setSelectedStudent(Student selectedStudent) {
+        if (selectedInformation.isEmpty()) {
+            this.selectedInformation.add(selectedStudent);
+        } else {
+            ObservableList<Lab> labList = selectedStudent.getLabList();
+            labList.sort(new SortByLabNumber());
+            this.selectedInformation.set(0, selectedStudent);
+        }
     }
 
     /**
      * Changes the selected labs to the one specified by the input.
      */
     public void setSelectedLabs(List<Lab> labs) {
-        this.selectedLabs.setAll(labs);
+        if (!(selectedInformation.size() == 1)) {
+            selectedInformation.remove(1, selectedInformation.size());
+        }
+        labs.sort(new SortByLabNumber());
+        selectedInformation.addAll(labs);
     }
+
     /**
-     * Clears the selected labs.
+     * Clears the selected information.
      */
-    public void clearSelectedLabs() {
-        this.selectedLabs.clear();
+    public void clearSelectedInformation() {
+        this.selectedInformation.clear();
     }
 
     /**

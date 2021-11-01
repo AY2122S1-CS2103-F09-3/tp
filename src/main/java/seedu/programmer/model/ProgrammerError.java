@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.programmer.model.student.DisplayableObject;
 import seedu.programmer.model.student.Lab;
 import seedu.programmer.model.student.Student;
 import seedu.programmer.model.student.UniqueStudentList;
@@ -94,31 +95,24 @@ public class ProgrammerError implements ReadOnlyProgrammerError {
     }
 
     /**
-     * Returns the selected student wrapped in an ObservableList.
+     * Returns the selected information.
      */
-    public ObservableList<Student> getSelectedStudentWrapper() {
-        return students.getSelectedStudentWrapper();
+    public ObservableList<DisplayableObject> getSelectedInformation() {
+        return students.getSelectedInformation();
     }
 
     /**
-     * Puts the target student in the wrapper.
+     * Returns the selected student.
      */
-    public void setSelectedStudentWrapper(Student target) {
-        students.setSelectedStudentWrapper(target);
+    public Student getSelectedStudent() {
+        return students.getSelectedStudent();
     }
 
     /**
-     * Clears the selected student in the wrapper.
+     * Changes the selected student to the one specified by the input.
      */
-    public void clearSelectedStudentWrapper() {
-        students.clearSelectedStudentWrapper();
-    }
-
-    /**
-     * Returns the selected labs.
-     */
-    public ObservableList<Lab> getSelectedLabs() {
-        return students.getSelectedLabs();
+    public void setSelectedStudent(Student target) {
+        students.setSelectedStudent(target);
     }
 
     /**
@@ -131,8 +125,8 @@ public class ProgrammerError implements ReadOnlyProgrammerError {
     /**
      * Clears the selected labs.
      */
-    public void clearSelectedLabs() {
-        students.clearSelectedLabs();
+    public void clearSelectedInformation() {
+        students.clearSelectedInformation();
     }
 
     /**
@@ -160,11 +154,6 @@ public class ProgrammerError implements ReadOnlyProgrammerError {
     @Override
     public ObservableList<Student> getStudentList() {
         return students.asUnmodifiableObservableList();
-    }
-
-    @Override
-    public ObservableList<Lab> showLabResultList(Student target) {
-        return target.getLabList();
     }
 
     @Override

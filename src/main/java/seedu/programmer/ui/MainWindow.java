@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 
 import org.json.JSONArray;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -54,7 +52,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private StudentListPanel studentListPanel;
-    private StudentParticularPanel studentParticular;
     private LabResultListPanel labResultListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -91,13 +88,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane labResultListPanelPlaceholder;
 
     @FXML
-    private StackPane studentParticularPlaceholder;
-
-    @FXML
     private StackPane statusbarPlaceholder;
-
-    @FXML
-    private SplitPane sidePanel;
 
     @FXML
     private SplitPane mainPanel;
@@ -115,35 +106,12 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
         setAccelerators();
-        fixDividerPositions();
 
         helpWindow = new HelpWindow();
         dashboardWindow = new DashboardWindow(logic);
 
     }
 
-
-    /**
-     * Fixes the positions of the dividers in split panes.
-     * Code fragment taken from: https://stackoverflow.com/questions/26762928/javafx-disable-divider;
-     */
-    private void fixDividerPositions() {
-        SplitPane.Divider sideDivider = sidePanel.getDividers().get(0);
-        sideDivider.positionProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                sideDivider.setPosition(0.25);
-            }
-        });
-
-        SplitPane.Divider mainDivider = mainPanel.getDividers().get(0);
-        mainDivider.positionProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                mainDivider.setPosition(0.5);
-            }
-        });
-    }
 
     public Stage getPrimaryStage() {
         return primaryStage;
@@ -231,10 +199,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleShowResult() {
-        studentParticular = new StudentParticularPanel(logic.getSelectedStudentWrapper());
-        studentParticularPlaceholder.getChildren().add(studentParticular.getRoot());
-
-        labResultListPanel = new LabResultListPanel(logic.getSelectedLabs());
+        labResultListPanel = new LabResultListPanel(logic.getSelectedInformation());
         labResultListPanelPlaceholder.getChildren().add(labResultListPanel.getRoot());
     }
 
@@ -243,8 +208,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleDashboard() {
+        dashboardWindow.update();
         if (dashboardWindow.isShowing()) {
-            dashboardWindow.update();
             dashboardWindow.focus();
             return;
         }
@@ -403,9 +368,7 @@ public class MainWindow extends UiPart<Stage> {
             } else if (commandResult instanceof UploadCommandResult) {
                 handleUpload();
             }
-            if (dashboardWindow.isShowing()) {
-                dashboardWindow.update();
-            }
+            dashboardWindow.update();
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);

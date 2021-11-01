@@ -2,7 +2,6 @@
 package seedu.programmer.logic.parser;
 
 import static seedu.programmer.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.programmer.commons.core.Messages.MESSAGE_UNKNOWN_ARGUMENT_FLAG;
 import static seedu.programmer.logic.commands.CommandTestUtil.CLASS_ID_DESC_AMY;
 import static seedu.programmer.logic.commands.CommandTestUtil.CLASS_ID_DESC_BOB;
 import static seedu.programmer.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
@@ -61,9 +60,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser,
-                "-5" + NAME_DESC_AMY,
-                String.format(MESSAGE_UNKNOWN_ARGUMENT_FLAG, "[-5]", EditCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "-5" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
 
         // zero index
         assertParseFailure(parser, "0" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);

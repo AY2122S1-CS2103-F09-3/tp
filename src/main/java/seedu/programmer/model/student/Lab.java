@@ -2,7 +2,7 @@ package seedu.programmer.model.student;
 
 import static java.util.Objects.requireNonNull;
 
-public class Lab {
+public class Lab implements DisplayableObject {
 
     public static final String LAB_SCORE_MESSAGE_CONSTRAINTS = "The total score should be a positive value.";
 

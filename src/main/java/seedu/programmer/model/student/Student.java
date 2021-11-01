@@ -16,7 +16,7 @@ import seedu.programmer.model.student.comparator.SortByLabNumber;
  * Represents a student in the ProgrammerError.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Student {
+public class Student implements DisplayableObject {
 
     public static final String REQUIRE_POSITIVE_SCORE = "The student score should be a positive value.";
 

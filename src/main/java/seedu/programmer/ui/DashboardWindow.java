@@ -7,7 +7,9 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.programmer.commons.core.LogsCenter;
 import seedu.programmer.logic.Logic;
@@ -31,7 +33,10 @@ public class DashboardWindow extends PopupWindow {
     private StackPane overallStatsPlaceholder;
 
     @FXML
-    private StackPane labsMarkedList;
+    private ScrollPane labsMarkedList;
+
+    @FXML
+    private VBox labVBox;
 
 
     /**
@@ -73,12 +78,12 @@ public class DashboardWindow extends PopupWindow {
     }
 
     private void fillLabsMarked() {
-        labsMarkedList.getChildren().clear();
+        labVBox.getChildren().clear();
         String labsMarked = formatLabsToDisplay(labsUnmarkedMap);
         Label labsLabel = new Label(labsMarked);
         labsLabel.getStylesheets().add("view/Dashboard.css");
         labsLabel.getStyleClass().add("labs-marked");
-        labsMarkedList.getChildren().add(labsLabel);
+        labVBox.getChildren().add(labsLabel);
     }
 
     /**

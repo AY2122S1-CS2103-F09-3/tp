@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.programmer.commons.core.GuiSettings;
 import seedu.programmer.commons.core.LogsCenter;
+import seedu.programmer.model.student.DisplayableObject;
 import seedu.programmer.model.student.Lab;
 import seedu.programmer.model.student.Student;
 
@@ -126,24 +127,21 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Student> getSelectedStudentWrapper() {
-        return programmerError.getSelectedStudentWrapper();
+    public ObservableList<DisplayableObject> getSelectedInformation() {
+        return programmerError.getSelectedInformation();
     }
 
     @Override
-    public void setSelectedStudentWrapper(Student target) {
-        programmerError.setSelectedStudentWrapper(target);
+    public Student getSelectedStudent() {
+        return programmerError.getSelectedStudent();
     }
 
-    @Override
-    public void clearSelectedStudentWrapper() {
-        programmerError.clearSelectedStudentWrapper();
-    }
 
     @Override
-    public ObservableList<Lab> getSelectedLabs() {
-        return programmerError.getSelectedLabs();
+    public void setSelectedStudent(Student target) {
+        programmerError.setSelectedStudent(target);
     }
+
 
     @Override
     public void setSelectedLabs(List<Lab> labs) {
@@ -151,8 +149,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void clearSelectedLabs() {
-        programmerError.clearSelectedLabs();
+    public void clearSelectedInformation() {
+        programmerError.clearSelectedInformation();
     }
 
     @Override
@@ -170,12 +168,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredStudents.setPredicate(predicate);
     }
-
-    @Override
-    public ObservableList<Lab> showLabResultList(Student target) {
-        return programmerError.showLabResultList(target);
-    }
-
 
     @Override
     public boolean equals(Object obj) {

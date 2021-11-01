@@ -50,21 +50,21 @@ public class EditLabCommandTest {
     }
 
     @Test
-    public void execute_labTitleDoesNotExist_throwsCommandException() throws Exception {
+    public void execute_labTitleDoesNotExist_throwsCommandException() {
         Lab labToEdit = new Lab(10);
         EditLabCommand editLabCommand = new EditLabCommand(labToEdit, newLabNum);
 
-        String expectedMessage = String.format(EditLabCommand.LAB_NUM_CONSTRAINTS, labToEdit);
+        String expectedMessage = String.format(EditLabCommand.MESSAGE_LAB_NOT_EXISTS, labToEdit.getLabNum());
 
         assertCommandFailure(editLabCommand, model, expectedMessage);
     }
 
     @Test
-    public void execute_newlabTitleAlreadyExists_throwsCommandException() throws Exception {
+    public void execute_newlabTitleAlreadyExists_throwsCommandException() {
         Lab labToEdit = getTypicalLabList().get(NUMBER_FIRST_LAB);
-        EditLabCommand editLabCommand = new EditLabCommand(labToEdit, 2);
+        EditLabCommand editLabCommand = new EditLabCommand(labToEdit, 1);
 
-        String expectedMessage = String.format(EditLabCommand.LAB_NEW_NUM_CONSTRAINTS, labToEdit);
+        String expectedMessage = String.format(EditLabCommand.MESSAGE_LAB_ALREADY_EXISTS, labToEdit.getLabNum());
 
         assertCommandFailure(editLabCommand, model, expectedMessage);
     }

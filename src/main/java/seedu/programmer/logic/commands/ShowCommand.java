@@ -40,7 +40,7 @@ public class ShowCommand extends Command {
         }
 
         Student studentToShow = lastShownList.get(targetIndex.getZeroBased());
-        model.setSelectedStudentWrapper(studentToShow);
+        model.setSelectedStudent(studentToShow);
         model.setSelectedLabs(studentToShow.getLabList());
         String feedbackToUser = String.format(MESSAGE_SHOW_STUDENT_SUCCESS, studentToShow.getName());
         return new ShowCommandResult(feedbackToUser, studentToShow);

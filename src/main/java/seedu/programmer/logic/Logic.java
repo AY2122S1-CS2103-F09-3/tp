@@ -11,7 +11,7 @@ import seedu.programmer.logic.parser.exceptions.ParseException;
 import seedu.programmer.model.Model;
 import seedu.programmer.model.ProgrammerError;
 import seedu.programmer.model.ReadOnlyProgrammerError;
-import seedu.programmer.model.student.Lab;
+import seedu.programmer.model.student.DisplayableObject;
 import seedu.programmer.model.student.Student;
 import seedu.programmer.storage.Storage;
 
@@ -38,14 +38,8 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of students */
     ObservableList<Student> getFilteredStudentList();
 
-    /** Returns the selected student wrapped in an ObservableList */
-    ObservableList<Student> getSelectedStudentWrapper();
-
     /** Returns the selected labs. */
-    ObservableList<Lab> getSelectedLabs();
-
-    /** Returns an unmodifiable view of the lab scores of a student */
-    ObservableList<Lab> getLabResultList(Student target);
+    ObservableList<DisplayableObject> getSelectedInformation();
 
     /**
      * Returns the user prefs' ProgrammerError file path.

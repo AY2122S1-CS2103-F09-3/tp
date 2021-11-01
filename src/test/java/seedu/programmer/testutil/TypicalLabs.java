@@ -24,9 +24,7 @@ public class TypicalLabs {
      */
     public static ObservableList<Lab> getTypicalLabList() {
         ObservableList<Lab> labResultList = FXCollections.observableArrayList();
-        for (Lab lab : getTypicalLabs()) {
-            labResultList.add(lab);
-        }
+        labResultList.addAll(getTypicalLabs());
         return labResultList;
     }
 

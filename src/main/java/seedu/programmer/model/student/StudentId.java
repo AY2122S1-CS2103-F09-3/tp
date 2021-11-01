@@ -13,7 +13,7 @@ public class StudentId {
             "Student ID should be of the form AXXXXXXXY where X is a non-negative integer "
                 + "and Y is the last character of your student ID."
                 + "\nFor example: A0212345T";
-
+  
     /*
      * A student ID must start and end with an alphabet, and has exactly 7 numbers between the two letters
      */

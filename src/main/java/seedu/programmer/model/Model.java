@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.programmer.commons.core.GuiSettings;
+import seedu.programmer.model.student.DisplayableObject;
 import seedu.programmer.model.student.Lab;
 import seedu.programmer.model.student.Student;
 
@@ -66,12 +67,6 @@ public interface Model {
     void deleteStudent(Student target);
 
     /**
-     * Shows the given student's lab results.
-     * The student must exist in ProgrammerError.
-     */
-    ObservableList<Lab> showLabResultList(Student target);
-
-    /**
      * Adds the given student.
      * {@code student} must not already exist in the ProgrammerError.
      * */
@@ -88,23 +83,20 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered student list */
     ObservableList<Student> getFilteredStudentList();
 
-    /** Returns the selected student wrapped in an ObservableList */
-    ObservableList<Student> getSelectedStudentWrapper();
+    /** Returns the selected information.*/
+    ObservableList<DisplayableObject> getSelectedInformation();
 
-    /** Puts the target student in the wrapper.  */
-    void setSelectedStudentWrapper(Student target);
+    /** Returns the selected student.*/
+    Student getSelectedStudent();
 
-    /** Clears the selected student in the wrapper.  */
-    void clearSelectedStudentWrapper();
-
-    /** Returns the selected labs. */
-    ObservableList<Lab> getSelectedLabs();
+    /** Changes the selected student to the one specified by the input. */
+    void setSelectedStudent(Student target);
 
     /** Changes the selected labs to the one specified by the input. */
     void setSelectedLabs(List<Lab> labs);
 
     /** Clears the selected labs. */
-    void clearSelectedLabs();
+    void clearSelectedInformation();
 
     /** Sets the lab tracker to the specified list of labs. */
     void setLabsTracker(List<Lab> labs);

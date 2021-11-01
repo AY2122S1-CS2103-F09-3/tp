@@ -97,11 +97,5 @@ public class ProgrammerErrorTest {
         public ObservableList<Student> getStudentList() {
             return persons;
         }
-
-        @Override
-        public ObservableList<Lab> showLabResultList(Student target) {
-            return null;
-        }
     }
-
 }
