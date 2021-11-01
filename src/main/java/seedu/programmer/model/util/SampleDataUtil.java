@@ -102,9 +102,8 @@ public class SampleDataUtil {
 
     public static int getRandomLabScore (Lab lab) {
         Random r = new Random();
-        int minScore = 0;
         int maxScore = lab.getTotalScore();
-        int score = minScore + (maxScore - minScore) * r.nextInt();
+        int score = r.nextInt(maxScore);
         return score;
     }
 

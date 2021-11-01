@@ -79,7 +79,7 @@ public class EditLabCommand extends Command {
         }
         for (Student std : lastShownList) {
             Student editedStd = std;
-            if (total != null && total < 0.0) {
+            if (total < 0 ) {
                 throw new CommandException(LAB_SCORE_MESSAGE_CONSTRAINTS);
             } else if (!std.getLabList().contains(original)) {
                 throw new CommandException(LAB_NUM_CONSTRAINTS);

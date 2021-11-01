@@ -134,7 +134,7 @@ public class ParserUtil {
      * */
     public static int parseResult (String result) throws ParseException {
         int res = Integer.parseInt(result.trim());
-        if (result == 0) {
+        if (result == null) {
             return 0;
         } else if (res < 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditLabCommand.MESSAGE_USAGE));
@@ -148,7 +148,7 @@ public class ParserUtil {
      * @param total the total score of the lab assignment.
      * */
     public static int parseTotal(String total) throws ParseException {
-        int res = int.parseint(total.trim());
+        int res = Integer.parseInt(total.trim());
         if (total == null) {
             return 0;
         } else if (res < 0) {
