@@ -37,6 +37,7 @@ public class EditCommandTest {
     //TODO: Test failiing on CI
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
+        model = new ModelManager(getTypicalProgrammerError(), new UserPrefs());
         Student editedStudent = new StudentBuilder().build();
         EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder(editedStudent).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT, descriptor);
