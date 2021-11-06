@@ -34,37 +34,37 @@ public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalProgrammerError(), new UserPrefs());
 
-        @Test
-        public void execute_allFieldsSpecifiedUnfilteredList_success() {
-            Student editedStudent = new StudentBuilder().build();
-            EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder(editedStudent).build();
-            EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT, descriptor);
-            String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
-            Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
-            expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
-            assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-        }
+    @Test
+    public void execute_allFieldsSpecifiedUnfilteredList_success() {
+        Student editedStudent = new StudentBuilder().build();
+        EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder(editedStudent).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT, descriptor);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
+        Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
 
-        @Test
-        public void execute_someFieldsSpecifiedUnfilteredList_success() {
-            Index indexLastStudent = Index.fromOneBased(model.getFilteredStudentList().size());
-            Student lastStudent = model.getFilteredStudentList().get(indexLastStudent.getZeroBased());
+    @Test
+    public void execute_someFieldsSpecifiedUnfilteredList_success() {
+        Index indexLastStudent = Index.fromOneBased(model.getFilteredStudentList().size());
+        Student lastStudent = model.getFilteredStudentList().get(indexLastStudent.getZeroBased());
 
-            StudentBuilder studentInList = new StudentBuilder(lastStudent);
-            Student editedStudent = studentInList.withName(VALID_NAME_BOB).withClassId(VALID_CLASS_ID_BOB).build();
+        StudentBuilder studentInList = new StudentBuilder(lastStudent);
+        Student editedStudent = studentInList.withName(VALID_NAME_BOB).withClassId(VALID_CLASS_ID_BOB).build();
 
-            EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB)
-                    .withClassId(VALID_CLASS_ID_BOB).build();
-            EditCommand editCommand = new EditCommand(indexLastStudent, descriptor);
+        EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB)
+                .withClassId(VALID_CLASS_ID_BOB).build();
+        EditCommand editCommand = new EditCommand(indexLastStudent, descriptor);
 
-            String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
 
-            Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
-            expectedModel.setStudent(lastStudent, editedStudent);
+        Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        expectedModel.setStudent(lastStudent, editedStudent);
 
-            assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
 
-        }
+    }
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_failure() {
@@ -76,20 +76,20 @@ public class EditCommandTest {
         assertCommandFailure(editCommand, model, expectedMessage);
     }
 
-        @Test
-        public void execute_filteredList_success() {
-            Student studentInFilteredList = model.getFilteredStudentList().get(INDEX_FIRST_STUDENT.getZeroBased());
-            Student editedStudent = new StudentBuilder(studentInFilteredList).withName(VALID_NAME_BOB).build();
-            EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT,
-                    new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB).build());
+    @Test
+    public void execute_filteredList_success() {
+        Student studentInFilteredList = model.getFilteredStudentList().get(INDEX_FIRST_STUDENT.getZeroBased());
+        Student editedStudent = new StudentBuilder(studentInFilteredList).withName(VALID_NAME_BOB).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT,
+                new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-            String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
 
-            Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
-            expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
-            expectedModel.updateFilteredStudentList(Model.PREDICATE_SHOW_ALL_STUDENTS);
-            assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-        }
+        Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
+        expectedModel.updateFilteredStudentList(Model.PREDICATE_SHOW_ALL_STUDENTS);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_duplicateStudentUnfilteredList_failure() {
