@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.stage.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
 
-<fx:root title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root resizable="false" title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/help_icon.png" />
   </icons>
@@ -15,18 +19,28 @@
     <Scene>
       <stylesheets>
         <URL value="@../css/Fonts.css" />
+        <URL value="@../css/DarkTheme.css" />
         <URL value="@../css/HelpWindow.css" />
       </stylesheets>
-      <VBox>
+      <VBox style="-fx-background-color: -fx-main-bg-color;">
         <children>
-               <Label fx:id="description" text="Label" />
-               <TableView fx:id="featureTable" editable="true" prefHeight="378.0" prefWidth="470.0" />
-               <HBox alignment="CENTER">
-                  <children>
-              <Label fx:id="helpMessage" alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="394.0" text="Label" textOverrun="CLIP" wrapText="true" />
-              <Button fx:id="copyButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#copyUrl" prefHeight="25.0" prefWidth="75.0" text="Copy URL" textAlignment="JUSTIFY" wrapText="true" />
-                  </children>
-               </HBox>
+           <Label fx:id="description" text="Label" />
+           <TableView fx:id="featureTable" editable="true" prefHeight="378.0" prefWidth="470.0" />
+           <HBox alignment="CENTER">
+              <children>
+                  <Label fx:id="helpMessage" alignment="CENTER" contentDisplay="CENTER" text="Label" textOverrun="CLIP" wrapText="true">
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                        <padding>
+                           <Insets bottom="25.0" right="15.0" top="25.0" />
+                        </padding></Label>
+                  <Button fx:id="copyButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#copyUrl" text="Copy URL" textAlignment="JUSTIFY" wrapText="true" />
+              </children>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+           </HBox>
         </children>
       </VBox>
     </Scene>

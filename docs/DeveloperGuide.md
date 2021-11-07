@@ -45,7 +45,7 @@ the [diagrams](https://github.com/AY2122S1-CS2103-F09-3/tp/tree/master/docs/diag
 
 ## <a name="Architecture"></a> Architecture
 
-<img src="images/ArchitectureDiagram.png" width="280" />
+<img src="images/ArchitectureDiagram.png" width="280"/>
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 

@@ -12,26 +12,26 @@ classes. If you are familiar with Unix commands, this is definitely for you!
 
 - [Quick Start](#quick-start)
 - [Features](#features)
-    1. [General Features](#general-features)
+  1. [General Features](#general-features)
         1. [View Help: `help`](#view-help)
         2. [View Dashboard `dashboard`](#view-dashboard)
         3. [Exit: `exit`](#exit)
-    2. [Data Features](#data-features)
-        1. [Fill Sample Data: `fill`](#fill-sample-data)
-        2. [Purge All Data: `purge`](#purge-all-data)
-        3. [Download Data: `download`](#download-data)
-        4. [Upload Data: `upload`](#upload-data)
-    3. [Student Features](#student-features)
-        1. [Add Student: `add`](#add-student)
-        2. [Edit Student Details: `edit`](#edit-student)
-        3. [Delete Student: `delete`](#delete-student)
-        4. [Filter Students: `filter`](#filter-student)
-        5. [Show Student Details: `show`](#show-student)
-        6. [List All Students: `list`](#list-students)
-    4. [Lab Features](#lab-features)
-        1. [Add Lab: `addlab`](#add-lab)
-        2. [Edit Lab: `editlab`](#edit-lab)
-        3. [Delete Lab: `dellab`](#delete-lab)
+  2. [Data Features](#data-features)
+      1. [Fill Sample Data: `fill`](#fill-sample-data)
+      2. [Purge All Data: `purge`](#purge-all-data)
+      3. [Download Data: `download`](#download-data)
+      4. [Upload Data: `upload`](#upload-data)
+  3. [Student Features](#student-features)
+      1. [Add Student: `add`](#add-student)
+      2. [Edit Student Details: `edit`](#edit-student)
+      3. [Delete Student: `delete`](#delete-student)
+      4. [Filter Students: `filter`](#filter-student)
+      5. [Show Student Details: `show`](#show-student)
+      6. [List All Students: `list`](#list-students)
+  4. [Lab Features](#lab-features)
+      1. [Add Lab: `addlab`](#add-lab)
+      2. [Edit Lab: `editlab`](#edit-lab)
+      3. [Delete Lab: `dellab`](#delete-lab)
 - [Command Summary](#command-summary)
 
 ## <a name="quick-start"></a>Quick Start
@@ -48,11 +48,12 @@ classes. If you are familiar with Unix commands, this is definitely for you!
    Here are some example commands you can try:
     * `add -n Sherwin -sid A1234567X -cid B01 -email e0523451@u.nus.edu`: Adds a student named `Sherwin` to PE with his
       Student ID, Class ID and Email.
-    * `edit 1 -n Sherwin`: Updates the name of the student at index 1 (1-indexed) to Sherwin
-    * `delete 1`: Deletes the student at index 1 (1-indexed)
+    * `edit 1 -n Sherwin`: Updates the name of the student at index 1 of the displayed list (1-indexed) to Sherwin
+    * `delete 1`: Deletes the student at index 1 of the displayed list (1-indexed)
     * `filter -sid A1234567X`: Filters the list of students to display the student(s) whose student ID contains `
-      A1234567X'
+      A1234567X' (case-insensitive)
 6. Refer to the [Features](#features) below for details on all available commands.
+Take note that command parameters wrapped with `[` `]` listed in this guide signifies that the parameter is optional.
 
 ## <a name="features"></a>Features
 
@@ -74,6 +75,19 @@ classes. If you are familiar with Unix commands, this is definitely for you!
   ignored. e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 </div>
+
+## Parameter Summary
+
+Parameter | What it means
+--------| ----------------------
+**-n** | Name of Student
+**-sid** | Student ID of Student
+**-cid** | Class ID of Student
+**-email** | Email of Student
+**-ln** | Lab Number
+**-nln** | New Lab Number (used for `editlab` command only)
+**-ts** | Lab Total Score
+**-s** | Lab Score of Student
 
 ## <a name="general-features"></a>1. General Features
 
@@ -155,19 +169,15 @@ Format: `add -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>`
 
 ### <a name="edit-student"></a>3.2 Edit Student's Details or Grade : `edit`
 
-Edits the details or grade of an existing student's in the PE.  Both the student ID and class ID must be unique. Take note that 1-indexing is used here as according to
-the displayed list.
+Edits the details or grade of an existing student's in the PE.
+Both the student ID and class ID must be unique. 1-indexing is used here as according to the displayed list.
+Any combination of the optional arguments can be provided.
+Take note that the parameters `-ln` and `-s` needs to be specified together.
 
-Format 1:
-
-`edit <INDEX_IN_LIST> -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>`
-
-Format 2:
-
-`edit <INDEX_IN_LIST> -ln <LAB_NUMBER> -s <ACTUAL_SCORE>`
+Format: `edit <INDEX_IN_LIST> [-n <NAME>] [-sid <STUDENT_ID>] [-cid <CLASS_ID>] [-email <EMAIL>] [-ln <LAB_NUMBER> -s <ACTUAL_SCORE>]`
 
 - Updates the student with at the given `INDEX_IN_LIST' with the arguments provided.
-- Existing values will be updated to the input values.
+- Existing values will be updated to the input flag arguments.
 
 <div markdown="block" class="alert alert-success">💡 **Examples:**
 
@@ -193,12 +203,12 @@ Format: `delete <STUDENT_INDEX>`
 ### <a name="filter-student"></a>3.4 Filter Students: `filter`
 
 Filter the students in ProgrammerError based on the specified arguments provided (name, student ID, class ID and email).
-Of the three arguments, at least one has to be provided. Arguments can be provided in any order and are
+Of the four arguments, at least one has to be provided. Arguments can be provided in any order and are
 **case-insensitive**. ProgrammerError will display the filtered list of students whose details matches all the specified
 arguments. The arguments are matched to the corresponding details as long as the details of the students contains the
 sequence of characters provided in the argument string.
 
-Format: `filter -n <NAME> -sid <STUDENT_ID> -cid <CLASS_ID> -email <EMAIL>`
+Format: `filter [-n <NAME>] [-sid <STUDENT_ID>] [-cid <CLASS_ID>] [-email <EMAIL>]`
 
 ![filter](images/commands/FilterCommand/filter.png)
 

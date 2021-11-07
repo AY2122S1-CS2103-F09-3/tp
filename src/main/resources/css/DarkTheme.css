@@ -12,6 +12,7 @@
     -fx-secondary-bg-color: #2d333b;
     -fx-light-bg-color: #444c56;
     -fx-highlight-color: #81a4cd;
+    -fx-light-text-color: #FFD369;
 }
 
 .background {
@@ -22,7 +23,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Open Sans Semibold";
-    -fx-text-fill: #555555;
+    -fx-text-fill: -fx-main-bg-color;
     -fx-opacity: 0.9;
 }
 

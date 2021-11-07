@@ -29,7 +29,7 @@ following [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?s
 
 2. **New Feature**: Added a command history feature that allows the tutor to navigate to previous commands using up/down keys.
    * What it does: Allows tutor to navigate previously executed commands, similar to the Unix CLI.
-   * Justification: So that tutors are able to be more efficient when using PE.
+   * Justification: So that fast-typists tutors are able to be more efficient when using PE.
    * Highlights: Involves a sef-directed learning experience using online materials to properly implement an "onKeyPressed" event listener.
    Requires deep thoughts into the edge cases to ensure that this feature is free of bug.
 

@@ -90,10 +90,10 @@ public class ProgrammerError implements ReadOnlyProgrammerError {
         return students.containsSameEmail(student);
     }
 
-
     /**
-     * Returns true if a student with the same identity as {@code student} exists in ProgrammerError.
+     * Returns true if a student with the same identity as {@code editedStudent} exists in ProgrammerError.
      * excluding himself/herself.
+     * Identity checking is done by checking if students have the same student ID or email.
      */
     public boolean hasOtherStudent(Student studentToEdit, Student editedStudent) {
         requireAllNonNull(studentToEdit, editedStudent);
@@ -101,7 +101,7 @@ public class ProgrammerError implements ReadOnlyProgrammerError {
     }
 
     /**
-     * Returns true if a student with the same identity as {@code student} exists in ProgrammerError.
+     * Returns true if a student with the same identity as {@code editedStudent} exists in ProgrammerError.
      * excluding himself/herself.
      */
     public boolean hasOtherSameStudentId(Student studentToEdit, Student editedStudent) {
@@ -110,7 +110,7 @@ public class ProgrammerError implements ReadOnlyProgrammerError {
     }
 
     /**
-     * Returns true if a student with the same identity as {@code student} exists in ProgrammerError.
+     * Returns true if a student with the same identity as {@code editedStudent} exists in ProgrammerError.
      * excluding himself/herself.
      */
     public boolean hasOtherSameStudentEmail(Student studentToEdit, Student editedStudent) {

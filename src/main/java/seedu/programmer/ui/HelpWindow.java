@@ -16,7 +16,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
- * Controller for a help page
+ * Controller for a help window
  */
 public class HelpWindow extends PopupWindow {
 
@@ -25,7 +25,8 @@ public class HelpWindow extends PopupWindow {
     private static final String DESCRIPTION = "Here's a list of ProgrammerError's features:";
 
     private static final String FXML = "HelpWindow.fxml";
-    private static final Double FRACTION_OF_WINDOW = 0.975;
+    private static final int FEATURE_COL_WIDTH = 1200;
+    private static final Double FRACTION_OF_WINDOW = 0.95;
     private static final double HELP_WINDOW_WIDTH = Screen.getPrimary().getBounds().getWidth() * FRACTION_OF_WINDOW;
 
     private ObservableList<FeatureTableItem> featureTableItems;
@@ -148,11 +149,11 @@ public class HelpWindow extends PopupWindow {
     private void initializeTableColumns() {
         TableColumn<FeatureTableItem, String> featureColumn = new TableColumn<>("Feature");
         featureColumn.setCellValueFactory(new PropertyValueFactory<>("feature"));
+        featureColumn.setMaxWidth(FEATURE_COL_WIDTH);
         TableColumn<FeatureTableItem, String> commandColumn = new TableColumn<>("Command Syntax");
         commandColumn.setCellValueFactory(new PropertyValueFactory<>("command"));
         TableColumn<FeatureTableItem, String> descriptionColumn = new TableColumn<>("Description");
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-
         featureTable.getColumns().add(featureColumn);
         featureTable.getColumns().add(commandColumn);
         featureTable.getColumns().add(descriptionColumn);

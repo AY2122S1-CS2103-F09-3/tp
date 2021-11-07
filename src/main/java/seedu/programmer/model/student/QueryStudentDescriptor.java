@@ -30,7 +30,7 @@ public class QueryStudentDescriptor {
     }
 
     /**
-     * Returns true if at least one field is edited.
+     * Returns true if at least one field is provided to be queried.
      */
     public boolean isAnyFieldToBeQueried() {
         return CollectionUtil.isAnyNonNull(name, studentId, classId, email);

@@ -1,12 +1,11 @@
 * {
-    -fx-font-family: null;
     -fx-font-size: 15;
     -fx-text-alignment: center;
     -fx-background-color: -fx-main-bg-color;
 }
 
 .overall-stats {
-    -fx-text-fill: #FFD369;
+    -fx-text-fill: -fx-light-text-color;
 }
 
 .labs-unmarked {

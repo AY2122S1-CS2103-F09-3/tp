@@ -26,7 +26,7 @@
             <VBox>
                   <ToolBar prefHeight="40.0" prefWidth="200.0" styleClass="background">
                     <items>
-                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" onMouseEntered="#handleHover" onMouseExited="#handleUnhover" text="Exit (F1)" />
+                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" text="Exit (F1)" />
                         <Button fx:id="helpButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleHelp" text="Help (F2)" />
                         <Button fx:id="downloadButton" layoutX="87.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleDownload" text="Download (F3)" />
                         <Button fx:id="uploadButton" layoutX="217.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleUpload" text="Upload (F4)" />

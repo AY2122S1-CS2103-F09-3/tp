@@ -73,18 +73,37 @@ public class CommandHistory {
                 && currCommandIndex == e.currCommandIndex;
     }
 
+    /**
+     * Checks if the {@code commandHistory} is empty.
+     * {@code commandHistory} is empty if no commands has been executed.
+     * @return boolean true if {@code commandHistory} is empty and false otherwise.
+     */
     public boolean isEmpty() {
         return commandHistory.size() == 0;
     }
 
+    /**
+     * Checks if the {@code currCommandIndex} is pointing at the most recently executed command.
+     * @return boolean true if the {@code currCommandIndex} is pointing at the most recently executed command and
+     * false otherwise.
+     */
     public boolean isAtLastIndex() {
         return currCommandIndex == commandHistory.size() - 1;
     }
 
+    /**
+     * Checks if the {@code currCommandIndex} is pointing at the least recently executed command.
+     * @return boolean true if the {@code currCommandIndex} is pointing at the least recently executed command and
+     * false otherwise.
+     */
     public boolean isAtFirstIndex() {
         return currCommandIndex == 0;
     }
 
+    /**
+     * Returns the command where {@code currCommandIndex} is pointing at.
+     * @return String of the command being pointed at the current moment.
+     */
     public String getCurrentCommand() {
         return isEmpty() ? "" : commandHistory.get(currCommandIndex);
     }

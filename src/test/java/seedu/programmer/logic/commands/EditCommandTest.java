@@ -71,7 +71,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT, new EditStudentDescriptor());
         Student editedStudent = model.getFilteredStudentList().get(INDEX_FIRST_STUDENT.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_NOT_EDITED, editedStudent);
+        String expectedMessage = String.format(EditCommand.MESSAGE_NO_NEW_FIELDS, editedStudent);
 
         assertCommandFailure(editCommand, model, expectedMessage);
     }

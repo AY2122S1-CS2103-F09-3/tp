@@ -13,6 +13,12 @@ public class DownloadCommand extends Command {
             + "Example: " + COMMAND_WORD;
     public static final String SHOWING_DOWNLOAD_MESSAGE = "Download command executed.";
 
+    /**
+     * Returns a DownloadCommandResult with a message to indicate that the command was executed.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return DownloadCommandResult with a message
+     */
     @Override
     public DownloadCommandResult execute(Model model) {
         return new DownloadCommandResult(SHOWING_DOWNLOAD_MESSAGE);

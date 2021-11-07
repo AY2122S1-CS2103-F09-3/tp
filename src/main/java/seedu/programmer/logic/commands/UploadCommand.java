@@ -14,8 +14,14 @@ public class UploadCommand extends Command {
 
     public static final String SHOWING_UPLOAD_MESSAGE = "Upload command executed.";
 
+    /**
+     * Returns an UploadCommandResult with a message to indicate that the command was executed.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return UploadCommandResult with a message
+     */
     @Override
-    public CommandResult execute(Model model) {
+    public UploadCommandResult execute(Model model) {
         return new UploadCommandResult(SHOWING_UPLOAD_MESSAGE);
     }
 }

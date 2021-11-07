@@ -44,7 +44,7 @@ project. ([View Reposense](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?s
 1. **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-17&tabOpen=true&tabType=authorship&tabAuthor=erwinqxy&tabRepo=AY2122S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 
 2. **Project management**:
-   * Managed releases `v1.2a` (1 release) on GitHub
+   * Managed releases `v1.2a, v1.4` (2 releases) on GitHub
 
 3. **Enhancements to existing features**:
       * Refactor the entire project structure to fit our product [#61](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/61), [#91](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/91), [#99](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/99), [#382](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/382)
@@ -55,11 +55,22 @@ project. ([View Reposense](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?s
       * Fix duplicate email [#427](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/427)
 
 4. **Reviews** 
-      * PRs reviewed (with non-trivial review comments):
+      * PRs reviewed:
         * [#98](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/98), [#100](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/100), [#108](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/108),
         [#109](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/109), [#110](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/110), [#152](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/152),
         [#153](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/153), [#252](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/252), [#413](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/413), 
         [#417](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/417), [#460](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/460/files)
 
 5. **Documentation**:
-   * Update documentation user guid, developer's guide [#165](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/165), [#240](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/240), [#246](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/246)
+   * Update documentation user guide, developer's guide [#165](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/165), [#240](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/240), [#246](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/246), 
+      [#474](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/474), [#482](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/482)
+
+6. **Community Contributions**: 
+   * Provide some feedback and bug reporting to another team during PED: [#1](https://github.com/erwinqxy/ped/issues/1),
+      [#2](https://github.com/erwinqxy/ped/issues/2), [#3](https://github.com/erwinqxy/ped/issues/3),
+      [#4](https://github.com/erwinqxy/ped/issues/4), [#5](https://github.com/erwinqxy/ped/issues/5),
+      [#6](https://github.com/erwinqxy/ped/issues/6), [#7](https://github.com/erwinqxy/ped/issues/7),
+      [#8](https://github.com/erwinqxy/ped/issues/8), [#9](https://github.com/erwinqxy/ped/issues/9),
+      [#10](https://github.com/erwinqxy/ped/issues/10), [#11](https://github.com/erwinqxy/ped/issues/11),
+      [#12](https://github.com/erwinqxy/ped/issues/12), [#13](https://github.com/erwinqxy/ped/issues/13),
+      [#14](https://github.com/erwinqxy/ped/issues/13)

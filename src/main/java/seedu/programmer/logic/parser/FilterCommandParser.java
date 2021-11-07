@@ -37,7 +37,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                     String.format(MESSAGE_UNKNOWN_ARGUMENT_FLAG, e.getMessage(), FilterCommand.MESSAGE_USAGE));
         }
 
-        // Initializing all the arguments as null at the beginning.
+        // Initializing all the arguments at the beginning.
         String trimmedNameArg = getTrimmedPredicateArg(argMultimap, PREFIX_NAME);
         String trimmedSidArg = getTrimmedPredicateArg(argMultimap, PREFIX_STUDENT_ID);
         String trimmedCidArg = getTrimmedPredicateArg(argMultimap, PREFIX_CLASS_ID);
@@ -47,11 +47,13 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                                                                                   trimmedCidArg,
                                                                                   trimmedEmailArg);
 
-        return new FilterCommand(new StudentDetailContainsQueryPredicate(queryStudentDescriptor));
+        StudentDetailContainsQueryPredicate predicate = new StudentDetailContainsQueryPredicate(queryStudentDescriptor);
+        return new FilterCommand(predicate);
     }
 
     /**
      * Retrieves the trimmed predicate argument from the argument Multimap.
+     * If argument does not exist in argument Multimap, returns `null` instead.
      *
      * @param argMultimap the map to get the argument from
      * @param predicate the specified predicate

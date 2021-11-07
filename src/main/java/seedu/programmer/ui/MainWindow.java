@@ -10,13 +10,9 @@ import org.json.JSONArray;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.StackPane;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import seedu.programmer.commons.core.GuiSettings;
 import seedu.programmer.commons.core.LogsCenter;
@@ -43,21 +39,24 @@ import seedu.programmer.model.student.exceptions.DuplicateStudentException;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
-    private static final Double NINETY_PERCENT = 0.9;
-
+    private static final String UPLOAD_SUCCESS_MESSAGE = "Upload success! All past students have been deleted. "
+                                                       + "You now have %s students.";
+    private static final String UPLOAD_FAIL_MESSAGE = "Upload failed: %s";
+    private static final String DOWNLOAD_NO_DATA_MESSAGE = "No data to download!";
+    private static final String DOWNLOAD_SUCCESS_MESSAGE = "Your data has been downloaded to %s !";
+    private static final String UPLOAD_FAIL_NO_STUDENTS_MESSAGE = String.format(UPLOAD_FAIL_MESSAGE,
+                                                                                "No students found in your file!");
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
-    private Stage primaryStage;
-    private Logic logic;
+    private final Stage primaryStage;
+    private final Logic logic;
 
-    // Independent Ui parts residing in this Ui container
-    private StudentListPanel studentListPanel;
-    private LabResultListPanel labResultListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
-    private DashboardWindow dashboardWindow;
-    private Popup popup = new Popup();
+    private final HelpWindow helpWindow;
+    private final DashboardWindow dashboardWindow;
+    private final PopupManager popupManager;
+    private final FileManager fileManager;
 
     @FXML
     private Scene primaryScene;
@@ -111,7 +110,8 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         dashboardWindow = new DashboardWindow(logic);
-
+        popupManager = new PopupManager(primaryStage);
+        fileManager = new FileManager(primaryStage);
     }
 
 
@@ -139,7 +139,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        studentListPanel = new StudentListPanel(logic.getFilteredStudentList());
+        // Independent Ui parts residing in this Ui container
+        StudentListPanel studentListPanel = new StudentListPanel(logic.getFilteredStudentList());
         studentListPanelPlaceholder.getChildren().add(studentListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -166,6 +167,9 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.setY(guiSettings.getWindowCoordinates().getY());
     }
 
+    /**
+     * Shows the primary stage to the user.
+     */
     void show() {
         primaryStage.show();
     }
@@ -201,7 +205,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleShowResult() {
-        labResultListPanel = new LabResultListPanel(logic.getSelectedInformation());
+        LabResultListPanel labResultListPanel = new LabResultListPanel(logic.getSelectedInformation());
         labResultListPanelPlaceholder.getChildren().add(labResultListPanel.getRoot());
         logger.fine("Showing student's lab results.");
     }
@@ -226,13 +230,13 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleUpload() {
-        File chosenFile = promptUserForCsvFile();
+        File chosenFile = fileManager.promptUserForCsvFile();
         if (chosenFile == null) {
             logger.info("User cancelled the file upload.");
             return;
         }
 
-        List<Student> stuList = getStudentList(chosenFile);
+        List<Student> stuList = getStudentListFromCsv(chosenFile);
         if (stuList == null) {
             return;
         }
@@ -241,11 +245,10 @@ public class MainWindow extends UiPart<Stage> {
             logic.replaceExistingStudents(stuList);
         } catch (DuplicateStudentException e) {
             logger.info("Aborting: file contains duplicate student");
-            displayPopup("Upload failed: " + e.getMessage());
+            popupManager.displayPopup(String.format(UPLOAD_FAIL_MESSAGE, e.getMessage()));
         }
 
-        displayPopup("Upload success! All past students have been deleted. You now have "
-                    + stuList.size() + " students.");
+        popupManager.displayPopup(String.format(UPLOAD_SUCCESS_MESSAGE, stuList.size()));
         logger.info("Uploaded CSV data successfully!");
     }
 
@@ -258,132 +261,42 @@ public class MainWindow extends UiPart<Stage> {
         assert (jsonData != null);
 
         if (jsonData.length() == 0) {
-            displayPopup("No data to download!");
+            popupManager.displayPopup(DOWNLOAD_NO_DATA_MESSAGE);
             return;
         }
 
-        File destinationFile = promptUserForFileDestination();
+        File destinationFile = fileManager.promptUserForFileDestination();
         if (destinationFile == null) {
             return;
         }
 
         JsonUtil.writeJsonToCsv(jsonData, destinationFile);
-        displayPopup("Your data has been downloaded to " + destinationFile + "!");
+        popupManager.displayPopup(String.format(DOWNLOAD_SUCCESS_MESSAGE, destinationFile));
         logger.info("Data successfully downloaded as CSV.");
     }
 
-    @FXML
-    private void handleHover() {
-        exitButton.setStyle("-fx-background-color: -fx-light-bg-color;");
-    }
-
-    @FXML
-    private void handleUnhover() {
-        exitButton.setStyle("-fx-background-color: -fx-main-bg-color;");
-    }
-
-    private List<Student> getStudentList(File chosenFile) {
+    /**
+     * Retrieves the list of students from the CSV file for upload command.
+     *
+     * @param chosenFile the CSV file to read from
+     * @return the list of Students
+     */
+    private List<Student> getStudentListFromCsv(File chosenFile) {
         List<Student> stuList;
         try {
             stuList = FileUtil.getStudentsFromCsv(chosenFile);
-        } catch (IllegalArgumentException | IOException e) {
-            displayPopup("Upload failed: " + e.getMessage()); // Error with file data
-            return null;
-        } catch (IllegalValueException e) {
-            displayPopup(e.getMessage()); // Error with file headers
+        } catch (IllegalArgumentException | IOException | IllegalValueException e) {
+            // Error with file data or file headers
+            popupManager.displayPopup(String.format(UPLOAD_FAIL_MESSAGE, e.getMessage()));
             return null;
         }
 
         if (stuList.size() == 0) {
-            displayPopup("Upload failed: No students were found in your file. "
-                        + "Use the purge command if you want to remove all students.");
+            popupManager.displayPopup(UPLOAD_FAIL_NO_STUDENTS_MESSAGE);
             return null;
         }
 
         return stuList;
-    }
-
-    /**
-     * Displays a popup message at the top-center with respect to the primaryStage.
-     *
-     * @param message to be displayed in the popup object on the primaryStage
-     */
-    private void displayPopup(String message) {
-        // We should not need to display an empty popup
-        assert (message != null);
-        double tenPercent = 1 - NINETY_PERCENT;
-        configurePopup(message);
-
-        // Add some left padding according to primaryStage's width
-        popup.setX(primaryStage.getX() + primaryStage.getWidth() * tenPercent / 2);
-
-        // Set Y coordinate scaled according to primaryStage's height
-        popup.setY(primaryStage.getY() + primaryStage.getHeight() * tenPercent);
-        popup.show(primaryStage);
-    }
-
-    /**
-     * Creates a Popup object with a message.
-     *
-     * @param message The text to display to the user
-     */
-    private void configurePopup(String message) {
-        popup.setAutoFix(true);
-        popup.setHideOnEscape(true);
-        Label label = createLabelForPopup(message);
-        popup.getContent().clear();
-        popup.getContent().add(label);
-    }
-
-    /**
-     * Creates a Label object with a message and styling.
-     *
-     * @param message to be displayed in the label
-     * @return a Label object with the message and styling
-     */
-    private Label createLabelForPopup(String message) {
-        Label label = new Label(message);
-        label.setWrapText(true);
-        label.setMaxWidth(primaryStage.getWidth() * NINETY_PERCENT);
-        label.getStyleClass().add("popup-label");
-
-        // Hide popup when the user clicks on it
-        label.setOnMouseReleased(e -> popup.hide());
-        return label;
-    }
-
-    /**
-     * Configures file chooser to accept only CSV files.
-     *
-     * @param fileChooser FileChooser object
-     */
-    private static void configureFileChooser(final FileChooser fileChooser) {
-        fileChooser.setTitle("Select CSV file");
-        FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("All CSVs", "*.csv");
-        fileChooser.getExtensionFilters().add(csvFilter);
-    }
-
-    /**
-     * Shows user a dialog to choose a CSV file.
-     *
-     * @return chosen CSV file
-     */
-    public File promptUserForCsvFile() {
-        FileChooser fileChooser = new FileChooser();
-        configureFileChooser(fileChooser);
-        return fileChooser.showOpenDialog(primaryStage);
-    }
-
-    /**
-     * Creates a File object based on user's chosen directory.
-     *
-     * @return File object with a file name appended to the chosen directory
-     */
-    public File promptUserForFileDestination() {
-        String destFileName = "programmerError.csv";
-        DirectoryChooser dirChooser = new DirectoryChooser();
-        File chosenDir = dirChooser.showDialog(primaryStage);
-        return chosenDir == null ? null : new File(chosenDir, destFileName);
     }
 
     /**

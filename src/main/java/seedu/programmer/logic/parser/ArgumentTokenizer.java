@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import seedu.programmer.commons.core.LogsCenter;
 import seedu.programmer.logic.parser.exceptions.InvalidArgFlagsException;
-
 
 /**
  * Tokenizes arguments string of the form: {@code preamble <prefix>value <prefix>value ...}<br>
@@ -20,7 +21,7 @@ import seedu.programmer.logic.parser.exceptions.InvalidArgFlagsException;
  *    in the above example.<br>
  */
 public class ArgumentTokenizer {
-
+    private static final Logger logger = LogsCenter.getLogger(ArgumentTokenizer.class);
     /**
      * Tokenizes an arguments string and returns an {@code ArgumentMultimap} object that maps prefixes to their
      * respective argument values. Only the given prefixes will be recognized in the arguments string.
@@ -28,12 +29,16 @@ public class ArgumentTokenizer {
      * @param argsString Arguments string of the form: {@code preamble <prefix>value <prefix>value ...}
      * @param prefixes   Prefixes to tokenize the arguments string with
      * @return           ArgumentMultimap object that maps prefixes to their arguments
+     * @throws InvalidArgFlagsException is thrown when invalid arguments are present in the {@code argString}
      */
     public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) throws InvalidArgFlagsException {
         List<String> invalidFlags = extractInvalidPrefixes(argsString, prefixes);
         if (invalidFlags.size() != 0) {
-            throw new InvalidArgFlagsException(invalidFlags.toString());
+            String invalidFlagsString = invalidFlags.toString();
+            logger.info("Unable to tokenize command due to invalid arguments found: " + invalidFlagsString);
+            throw new InvalidArgFlagsException(invalidFlagsString);
         }
+
         List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixes);
         return extractArguments(argsString, positions);
     }
@@ -43,9 +48,11 @@ public class ArgumentTokenizer {
         List<String> flags = Arrays.stream(splitArg)
                 .filter(word -> isPrefixAsFlagArg(word))
                 .collect(Collectors.toList());
+
         List<String> invalidFlags = flags.stream()
                 .filter(flag -> !isValidFlag(prefixes, flag))
                 .collect(Collectors.toList());
+
         return invalidFlags;
     }
 

@@ -22,7 +22,7 @@ public class PurgeCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        if (checkEmpty(model)) {
+        if (isLastShownListEmpty(model)) {
             return new CommandResult(MESSAGE_FAIL);
         }
         model.setProgrammerError(new ProgrammerError());
@@ -33,11 +33,11 @@ public class PurgeCommand extends Command {
     }
 
     /**
-     * Parse ProgrammerError and check if its empty.
+     * Parses ProgrammerError and check if its empty.
      * @param model Input the model/data.
      * @return Whether the list is empty or not.
      */
-    public Boolean checkEmpty(Model model) {
+    public boolean isLastShownListEmpty(Model model) {
         List<Student> lastShownList = model.getFilteredStudentList();
         return lastShownList.size() == 0;
     }

@@ -1,3 +1,32 @@
-#copyButton, #helpMessage {
+* {
+    -fx-text-fill: -fx-light-text-color;
+}
+
+#copyButton, #helpMessage, #description {
     -fx-font-family: "Open Sans";
+    -fx-text-fill: -fx-highlight-color;
+}
+
+#featureTable {
+    -fx-background-color: -fx-main-bg-color;
+    -fx-font-size: 14;
+}
+
+.table-row-cell:focused {
+    -fx-background-insets: 0 0 0 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+#copyButton {
+    -fx-background-color: -fx-highlight-color;
+    -fx-text-fill: -fx-main-bg-color;
+}
+
+#copyButton:hover {
+    -fx-background-color: -fx-light-text-color;
 }

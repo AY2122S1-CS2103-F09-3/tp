@@ -103,8 +103,9 @@ public class Student implements DisplayableObject {
 
     /**
      * Adds a lab to all the student records
+     * @return true if lab is successfully added
      * */
-    public Boolean addLab(Lab lab) {
+    public boolean addLab(Lab lab) {
         int index = this.labList.indexOf(lab);
         if (index == -1) {
             Lab newLab = lab.copy();
@@ -118,6 +119,7 @@ public class Student implements DisplayableObject {
 
     /**
      * Deletes a lab from all the student records
+     * @returns ture if lab is successfully deleted
      * */
     public boolean deleteLab(Lab lab) {
         return this.labList.remove(lab);
@@ -139,6 +141,7 @@ public class Student implements DisplayableObject {
 
     /**
      * Updates a lab result for a student
+     * @return true if lab info is successfully edited
      * */
     public boolean editLabInfo(Lab lab, LabNum newLabNum, LabTotal total) {
         Lab newLab = new Lab(newLabNum);
