@@ -96,12 +96,10 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
-        if (model.hasOtherStudent(studentToEdit, editedStudent)) {
-            if (model.hasOtherSameStudentId(studentToEdit, editedStudent)) {
-                throw new CommandException(MESSAGE_DUPLICATE_STUDENT_ID);
-            } else if (model.hasOtherSameStudentEmail(studentToEdit, editedStudent)) {
-                throw new CommandException(MESSAGE_DUPLICATE_STUDENT_EMAIL);
-            }
+        if (model.hasOtherSameStudentId(studentToEdit, editedStudent)) {
+            throw new CommandException(MESSAGE_DUPLICATE_STUDENT_ID);
+        } else if (model.hasOtherSameStudentEmail(studentToEdit, editedStudent)) {
+            throw new CommandException(MESSAGE_DUPLICATE_STUDENT_EMAIL);
         }
 
         model.setStudent(studentToEdit, editedStudent);
