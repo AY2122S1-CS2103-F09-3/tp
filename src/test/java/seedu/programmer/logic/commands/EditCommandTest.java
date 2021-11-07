@@ -40,7 +40,7 @@ public class EditCommandTest {
         EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder(editedStudent).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_STUDENT, descriptor);
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
-        Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalProgrammerError(), new UserPrefs());
         expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -59,7 +59,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
 
-        Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        Model expectedModel = new ModelManager(new ProgrammerError(getTypicalProgrammerError()), new UserPrefs());
         expectedModel.setStudent(lastStudent, editedStudent);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -85,7 +85,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent);
 
-        Model expectedModel = new ModelManager(new ProgrammerError(model.getProgrammerError()), new UserPrefs());
+        Model expectedModel = new ModelManager(new ProgrammerError(getTypicalProgrammerError()), new UserPrefs());
         expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
         expectedModel.updateFilteredStudentList(Model.PREDICATE_SHOW_ALL_STUDENTS);
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
