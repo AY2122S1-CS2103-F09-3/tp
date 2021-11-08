@@ -91,7 +91,8 @@ project. ([View Reposense](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?s
          , [#246](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/246),
          [#474](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/474)
          , [#482](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/482) , [#496](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/496),
-         [#522](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/522), [#533](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/533)
+         [#522](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/522), [#533](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/533),
+     [#614](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/614), [#615](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/615), [#616](https://github.com/AY2122S1-CS2103-F09-3/tp/pull/616)
 
 6. **Community Contributions**:
     * Provided some feedback and bug reporting to another team during
