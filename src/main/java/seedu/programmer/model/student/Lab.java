@@ -8,7 +8,8 @@ public class Lab implements DisplayableObject {
             "Both Lab Number and Score to be should be provided together.";
     public static final String MESSAGE_LAB_NUMBER_CONSTRAINT =
             "Lab number should be between 1 and 13 (inclusive).";
-    public static final String MESSAGE_LAB_SCORE_CONSTRAINT = "Lab score should be a non-negative integer or a unmarked placeholder(-1).";
+    public static final String MESSAGE_LAB_SCORE_CONSTRAINT = "Lab score should be a non-negative integer or " +
+            "a unmarked placeholder(-1).";
     public static final String MESSAGE_LAB_TOTAL_SCORE_CONSTRAINT =
             "Lab total score should be between 1 and 100 (inclusive)";
 
