@@ -28,7 +28,7 @@ public class LabNum {
      * Returns true if a given string is a valid labNum.
      */
     public static boolean isValidLabNum (Integer test) {
-        return test.compareTo(0) >= 0 && test.compareTo(14) < 0;
+        return test.compareTo(0) > 0 && test.compareTo(14) < 0;
     }
 
     @Override

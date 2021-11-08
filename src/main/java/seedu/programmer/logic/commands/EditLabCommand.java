@@ -57,7 +57,7 @@ public class EditLabCommand extends Command {
     public EditLabCommand(Lab original, LabTotal total) {
         this.original = original;
         this.total = total;
-        this.newLabNum = new LabNum(0);
+        this.newLabNum = new LabNum(original.getLabNumValue());
     }
 
     /**
@@ -81,7 +81,8 @@ public class EditLabCommand extends Command {
         }
         Lab newLab = new Lab(newLabNum);
 
-        if (studentList.get(0).getLabList().contains(newLab)) {
+        if (original.getLabTotal() != null && original.getLabTotal().equals(total)
+                && studentList.get(0).getLabList().contains(newLab)) {
             throw new CommandException(String.format(Lab.MESSAGE_LAB_ALREADY_EXISTS, newLab));
         }
 
